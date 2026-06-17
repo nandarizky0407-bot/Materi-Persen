@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Belajar Matematika Kelas 5 - Persen (Kurikulum Merdeka)</title>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        :root {
+            --primary: #0A2540;
+            --secondary: #20639B;
+            --accent: #FF6B35;
+            --success: #3EDBF0;
+            --correct: #28A745;
+            --wrong: #DC3545;
+            --bg-light: #F8F9FA;
+            --bg-card: #FFFFFF;
+            --text-dark: #2D3142;
+            --text-light: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #111116;
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 40px 100px 40px;
+        }
+
+        #presentation-container {
+            width: 100%;
+            max-width: 100%; 
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .slide {
+            width: 100%;
+            min-height: 580px;
+            padding: 60px 80px; 
+            background: var(--bg-card); 
+            color: var(--text-dark);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            position: relative;
+            scroll-margin-top: 20px;
+        }
+
+        .slide.dark {
+            background: var(--primary) !important;
+            color: var(--text-light);
+        }
+
+        .slide.accent {
+            background: var(--accent) !important;
+            color: var(--text-light);
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 30px;
+            border-left: 8px solid var(--accent);
+            padding-left: 20px;
+            line-height: 1.2;
+        }
+
+        .dark h2 {
+            color: var(--text-light);
+            border-left-color: var(--success);
+        }
+
+        .accent h2 {
+            color: var(--text-light);
+            border-left-color: var(--primary);
+        }
+
+        h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .dark h3 {
+            color: var(--success);
+        }
+
+        p, li {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        /* Layout Utilities */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 15px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 15px;
+        }
+
+        .flex-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 520px;
+        }
+
+        .card {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--secondary);
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .formula-box {
+            background: #EDF2F7;
+            padding: 15px 25px;
+            border-radius: 10px;
+            border-left: 6px solid var(--secondary);
+            margin: 15px 0;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dark .formula-box {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            border-left-color: var(--success);
+        }
+
+        .badge {
+            background: var(--accent);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .slide-number {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            opacity: 0.6;
+        }
+
+        /* Menu Navigasi Melayang */
+        .controls {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(20, 20, 25, 0.95);
+            padding: 15px 35px;
+            border-radius: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .btn-nav {
+            background: var(--secondary);
+            border: none;
+            padding: 10px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+
+        .btn-nav:hover {
+            background: var(--accent);
+        }
+
+        .nav-status {
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+            min-width: 140px;
+            text-align: center;
+        }
+
+        .btn-interactive {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 35px;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(255,107,53,0.4);
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-interactive:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Peta Konsep */
+        .map-root {
+            background: var(--accent);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+        .map-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .map-node {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+        }
+        .map-node strong {
+            display: block;
+            font-size: 1.25rem;
+            color: var(--success);
+            margin-bottom: 8px;
+        }
+
+        /* Komponen Game Memasangkan */
+        .matching-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            gap: 40px;
+        }
+        .matching-column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 45%;
+        }
+        .match-item {
+            background: #EDF2F7;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        .match-item.selected {
+            border-color: var(--accent);
+            background: #FFE3D8;
+        }
+        .match-item.correct {
+            background: var(--correct);
+            color: white;
+            cursor: default;
+        }
+
+        /* Komponen Timer Khusus */
+        .timer-section {
+            background: #1A1A24;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .timer-display {
+            font-size: 2rem;
+            font-family: monospace;
+            color: var(--success);
+            font-weight: bold;
+        }
+        .timer-stats {
+            font-size: 1.1rem;
+            color: #ccc;
+            text-align: right;
+        }
+
+        /* Grid Interaktif untuk Latihan Soal */
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .item-box {
+            background: #EDF2F7;
+            border: 2px solid #ccc;
+            padding: 20px 10px;
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            color: var(--text-dark);
+            transition: all 0.2s;
+        }
+        .item-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Grid khusus 100 kotak visualisasi persen */
+        .percent-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 3px;
+            width: 250px;
+            height: 250px;
+            margin: 0 auto;
+        }
+        .grid-square {
+            background: #E2E8F0;
+            border-radius: 2px;
+        }
+        .grid-square.filled {
+            background: var(--accent);
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="presentation-container">
+
+    <div class="slide dark flex-center" id="slide-1">
+        <div class="badge">MATEMATIKA KELAS V SD</div>
+        <h1 style="color: #fff; font-size: 4rem;">Mengenal Konsep Persen</h1>
+        <p style="font-size: 1.8rem; color: var(--success); margin-top: 10px; font-weight: bold;">Kurikulum Merdeka</p>
+        <div style="margin-top: 60px; border-top: 2px solid rgba(255,255,255,0.2); padding-top: 20px; width: 450px;">
+            <p>Mari belajar bersama dengan seru dan interaktif! 🌟</p>
+        </div>
+        <div class="slide-number">1 / 16</div>
+    </div>
+
+    <div class="slide dark" id="slide-2">
+        <h2>Tujuan Pembelajaran Kita Hari Ini</h2>
+        <p style="margin-bottom: 30px; font-size: 1.4rem; opacity: 0.9;">Setelah mempelajari bab ini, diharapkan kalian mampu menguasai 4 hal hebat berikut:</p>
+        <div class="map-root">PETA CAPAIAN PEMBELAJARAN</div>
+        <div class="map-grid">
+            <div class="map-node">
+                <strong>1. Bentuk Persen</strong>
+                Menyatakan dan menentukan lambang serta bentuk persen dengan benar.
+            </div>
+            <div class="map-node">
+                <strong>2. Hubungan Nilai</strong>
+                Memahami hubungan erat antara bentuk persen, desimal, dan pecahan biasa.
+            </div>
+            <div class="map-node">
+                <strong>3. Menghitung Jumlah</strong>
+                Menentukan banyaknya suatu benda/bilangan berdasarkan persentase tertentu.
+            </div>
+            <div class="map-node">
+                <strong>4. Pemecahan Masalah</strong>
+                Menyelesaikan berbagai masalah persentase di kehidupan sehari-hari (diskon, jumlah siswa, dll).
+            </div>
+        </div>
+        <div class="slide-number">2 / 16</div>
+    </div>
+
+    <div class="slide" id="slide-3">
+        <h2>Pemanasan 1: Tantangan Kilat Kali 100!</h2>
+        <p>Ayo ingat kembali konsep desimal. Klik pada kartu untuk melihat hasil kalinya dengan angka <b>100</b>!</p>
+        <div class="grid-3" style="margin-top: 40px;">
+            <div class="card" style="text-align: center; cursor: pointer;" onclick="toggleAnswer(this)">
+                <h3>Soal A</h3>
+                <div style="font-size: 2.5rem; font-weight: bold; margin: 15px 0;">0,25</div>
+                <div class="formula-box answer-box" style="display:none; background: var(--correct); color: white;">\(0,25 \times 100 = \mathbf{25}\)</div>
+                <p class="hint-text" style="font-size: 1rem; color: #666;">Klik untuk cek jawaban</p>
+            </div>
+            <div class="card" style="text-align: center; cursor: pointer; border-top-color: var(--accent);" onclick="toggleAnswer(this)">
+                <h3>Soal B</h3>
+                <div style="font-size: 2.5rem; font-weight: bold; margin: 15px 0;">0,7</div>
+                <div class="formula-box answer-box" style="display:none; background: var(--correct); color: white;">\(0,7 \times 100 = \mathbf{70}\)</div>
+                <p class="hint-text" style="font-size: 1rem; color: #666;">Klik untuk cek jawaban</p>
+            </div>
+            <div class="card" style="text-align: center; cursor: pointer;" onclick="toggleAnswer(this)">
+                <h3>Soal C</h3>
+                <div style="font-size: 2.5rem; font-weight: bold; margin: 15px 0;">1,45</div>
+                <div class="formula-box answer-box" style="display:none; background: var(--correct); color: white;">\(1,45 \times 100 = \mathbf{145}\)</div>
+                <p class="hint-text" style="font-size: 1rem; color: #666;">Klik untuk cek jawaban</p>
+            </div>
+        </div>
+        <p style="margin-top: 30px; font-style: italic; font-size: 1.1rem; color: #555;">*Trik Rahasia: Mengalikan desimal dengan 100 sama dengan menggeser tanda koma ke kanan sebanyak dua langkah!</p>
+        <div class="slide-number">3 / 16</div>
+    </div>
+
+    <div class="slide" id="slide-4">
+        <h2>Pemanasan 2: Game Pecahan Senilai Penyebut 100</h2>
+        <p>Klik satu kotak di sebelah kiri, lalu klik kotak pasangannya yang senilai di sebelah kanan!</p>
+        
+        <div class="matching-container">
+            <div class="matching-column" id="col-left">
+                <div class="match-item" data-value="1/2" onclick="selectItem(this, 'left')">\( \frac{1}{2} \)</div>
+                <div class="match-item" data-value="1/4" onclick="selectItem(this, 'left')">\( \frac{1}{4} \)</div>
+                <div class="match-item" data-value="3/5" onclick="selectItem(this, 'left')">\( \frac{3}{5} \)</div>
+                <div class="match-item" data-value="7/10" onclick="selectItem(this, 'left')">\( \frac{7}{10} \)</div>
+            </div>
+            <div class="matching-column" id="col-right">
+                <div class="match-item" data-value="3/5" onclick="selectItem(this, 'right')">\( \frac{60}{100} \)</div>
+                <div class="match-item" data-value="1/2" onclick="selectItem(this, 'right')">\( \frac{50}{100} \)</div>
+                <div class="match-item" data-value="7/10" onclick="selectItem(this, 'right')">\( \frac{70}{100} \)</div>
+                <div class="match-item" data-value="1/4" onclick="selectItem(this, 'right')">\( \frac{25}{100} \)</div>
+            </div>
+        </div>
+        <div id="game-message" style="margin-top: 20px; text-align: center; font-weight: bold; color: var(--correct); font-size: 1.3rem;"></div>
+        <div class="slide-number">4 / 16</div>
+    </div>
+
+    <div class="slide" id="slide-5">
+        <h2>Mengenal Persen secara Mendalam</h2>
+        <div class="grid-2">
+            <div>
+                <h3>Apa itu Persen?</h3>
+                <p>Kata <b>Persen</b> berasal dari bahasa Latin <i>"Per Centum"</i> yang artinya adalah **"per seratus"**.</p>
+                <p>Persen adalah sebuah cara untuk menyatakan pecahan atau bagian dari keseluruhan benda jika benda tersebut dipotong menjadi tepat <b>100 bagian yang sama besar</b>.</p>
+                <div class="formula-box" style="font-size: 1.8rem; font-weight: bold;">
+                    Lambang Persen: %
+                </div>
+                <p>Jika kita menuliskan \(25\%\), itu artinya sama dengan pecahan \(\frac{25}{100}\).</p>
+            </div>
+            <div class="card" style="text-align: center;">
+                <h3>Visualisasi Konsep Persentase</h3>
+                <p style="font-size: 1.1rem; margin-bottom: 15px;">Kotak di bawah ini dibagi menjadi 100 bagian. Bagian yang berwarna jingga melambangkan <b>\(35\%\)</b>.</p>
+                <div class="percent-grid">
+                    <script>
+                        for(let i=1; i<=100; i++){
+                            if(i<=35) document.write('<div class="grid-square filled"></div>');
+                            else document.write('<div class="grid-square"></div>');
+                        }
+                    </script>
+                </div>
+                <p style="margin-top: 15px; font-weight: bold;">\(35 \text{ dari } 100 \text{ kotak} = \frac{35}{100} = 35\%\)</p>
+            </div>
+        </div>
+        <div class="slide-number">5 / 16</div>
+    </div>
+
+    <div class="slide" id="slide-6">
+        <h2>Cara Mengubah Bentuk Pecahan, Desimal, dan Persen</h2>
+        <div class="grid-2">
+            <div class="card">
+                <h3>1. Mengubah ke Bentuk Persen</h3>
+                <p><b>Dari Pecahan:</b> Ubah penyebutnya menjadi 100 terlebih dahulu, atau kalikan langsung dengan \(100\%\).</p>
+                <div class="formula-box">\(\frac{3}{4} = \frac{3 \times 25}{4 \times 25} = \frac{75}{100} = 75\%\)</div>
+                <p><b>Dari Desimal:</b> Kalikan angka desimal dengan bilangan 100.</p>
+                <div class="formula-box">\(0,62 \times 100\% = 62\%\)</div>
+            </div>
+            <div class="card" style="border-top-color: var(--accent);">
+                <h3>2. Mengubah dari Persen ke Pecahan / Desimal</h3>
+                <p><b>Ke Pecahan Biasa:</b> Tuliskan ke dalam per seratus lalu sederhanakan pecahannya sampai paling kecil.</p>
+                <div class="formula-box">\(40\% = \frac{40}{100} = \frac{40 : 20}{100 : 20} = \frac{2}{5}\)</div>
+                <p><b>Ke Desimal:</b> Bagi angka persen dengan 100 (geser koma ke kiri 2 kali).</p>
+                <div class="formula-box">\(85\% = 85 : 100 = 0,85\)</div>
+            </div>
+        </div>
+        <div class="slide-number">6 / 16</div>
+    </div>
+
+    <div class="slide" id="slide-7">
+        <h2>Latihan 1: Mengubah Pecahan ke Persen</h2>
+        <p>Ayo tantang diri kalian! Klik tombol mulai, kerjakan soalnya, lalu klik kotak untuk memeriksa jawaban.</p>
+        
+        <div class="timer-section">
+            <div>
+                <button class="btn-nav" onclick="startTimer(1)">▶ Mulai Timer</button>
+                <button class="btn-nav" style="background:var(--wrong);" onclick="stopTimer(1)">■ Selesai</button>
+            </div>
+            <div class="timer-display" id="timer-display-1">00:00</div>
+            <div class="timer-stats" id="stats-1">Rata-rata waktu pengerjaan ideal kelas 5: <b>15-20 detik per soal</b></div>
+        </div>
+
+        <div class="interactive-grid">
+            <div class="item-box" onclick="showBoxAns(this, '20%')">\(\frac{1}{5}\)</div>
+            <div class="item-box" onclick="showBoxAns(this, '50%')">\(\frac{2}{4}\)</div>
+            <div class="item-box" onclick="showBoxAns(this, '75%')">\(\frac{3}{4}\)</div>
+            <div class="item-box" onclick="showBoxAns(this, '30%')">\(\frac{3}{10}\)</div>
+            <div class="item-box" onclick="showBoxAns(this, '35%')">\(\frac{7}{20}\)</div>
+        </div>
+        <div class="slide-number">7 / 16</div>
+    </div>
+
+    <div class="slide" id="slide-8">
+        <h2>Latihan 2: Mengubah Desimal ke Persen</h2>
+        <p>Ayo, seberapa cepat kalian bisa mengubah bentuk desimal di bawah ini menjadi bentuk persen?</p>
+        
+        <div class="timer-section">
+            <div>
+                <button class="btn-nav" onclick="startTimer(2)">▶ Mulai Timer</button>
+                <button class="btn-nav" style="background:var(--wrong);" onclick="stopTimer(2)">■ Selesai</button>
+            </div>
+            <div class="timer-display" id="timer-display-2">00:00</div>
+            <div class="timer-stats" id="stats-2">Rata-rata waktu pengerjaan ideal kelas 5: <b>10-15 detik per soal</b></div>
+        </div>
+
+        <div class="interactive-grid">
+            <div class="item-box" onclick="showBoxAns(this, '12%')">0,12</div>
+            <div class="item-box" onclick="showBoxAns(this, '5%')">0,05</div>
+            <div class="item-box" onclick="showBoxAns(this, '80%')">0,8</div>
+            <div class="item-box" onclick="showBoxAns(this, '99%')">0,99</div>
+            <div class="item-box" onclick="showBoxAns(this, '125%')">1,25</div>
+        </div>
+        <div class="slide-number">8 / 16</div>
+    </div>
+
+    <div class="slide" id="slide-9">
+        <h2>Latihan 3: Mengubah Persen ke Pecahan &amp; Desimal</h2>
+        <p>Ubah bentuk persen berikut ke dalam dua bentuk sekaligus (Pecahan paling sederhana &amp; Desimal)!</p>
+        
+        <div class="timer-section">
+            <div>
+                <button class="btn-nav" onclick="startTimer(3)">▶ Mulai Timer</button>
+                <button class="btn-nav" style="background:var(--wrong);" onclick="stopTimer(3)">■ Selesai</button>
+            </div>
+            <div class="timer-display" id="timer-display-3">00:00</div>
+            <div class="timer-stats" id="stats-3">Rata-rata waktu pengerjaan ideal kelas 5: <b>20-25 detik per soal</b></div>
+        </div>
+
+        <div class="interactive-grid">
+            <div class="item-box" onclick="showBoxAns(this, '1/2 | 0,5')">50%</div>
+            <div class="item-box" onclick="showBoxAns(this, '1/4 | 0,25')">25%</div>
+            <div class="item-box" onclick="showBoxAns(this, '1/5 | 0,2')">20%</div>
+            <div class="item-box" onclick="showBoxAns(this, '3/4 | 0,75')">75%</div>
+            <div class="item-box" onclick="showBoxAns(this, '9/10 | 0,9')">90%</div>
+        </div>
+        <div class="slide-number">9 / 16</div>
+    </div>
+
+    <div class="slide" id="slide-10">
+        <h2>Menentukan Banyaknya Benda Berdasarkan Persentase</h2>
+        <div class="grid-2">
+            <div>
+                <h3>Konsep Inti yang Wajib Diingat!</h3>
+                <p>Dalam matematika, jika kalian diminta mencari nilai dari kata **"persen dari suatu jumlah"**, maka itu artinya adalah operasi **perkalian**.</p>
+                <div class="formula-box" style="font-size: 1.8rem; flex-direction: column; background: #FFFEE0; border-left-color: var(--accent);">
+                    <div>\( \blacksquare\% \text{ dari } \bigstar \)</div>
+                    <div style="margin-top: 10px; font-weight: bold; color: var(--accent);">\( = \frac{\blacksquare}{100} \times \bigstar \)</div>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Contoh Kasus Nyata</h3>
+                <p>Di dalam kelas terdapat <b>40 siswa</b>. Sebanyak <b>\(20\%\)</b> dari siswa tersebut hobi bermain sepak bola. Berapa jumlah siswa yang hobi bermain sepak bola?</p>
+                <p><b>Cara menghitungnya:</b></p>
+                <div class="formula-box" style="font-size: 1.25rem; flex-direction: column; align-items: flex-start;">
+                    <div>\( 20\% \text{ dari } 40 \)</div>
+                    <div>\( = \frac{20}{100} \times 40 \)</div>
+                    <div>\( = \frac{20 \times 40}{100} = \frac{800}{100} = \mathbf{8 \text{ siswa}} \)</div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">10 / 16</div>
+    </div>
+
+    <div class="slide" id="slide-11">
+        <h2>Latihan 4: Menghitung Banyak Bilangan / Kuantitas</h2>
+        <p>Ayo hitung nilai dari persentase kuantitas benda berikut! Gunakan coretan kertas cakarmu.</p>
+        
+        <div class="timer-section">
+            <div>
+                <button class="btn-nav" onclick="startTimer(4)">▶ Mulai Timer</button>
+                <button class="btn-nav" style="background:var(--wrong);" onclick="stopTimer(4)">■ Selesai</button>
+            </div>
+            <div class="timer-display" id="timer-display-4">00:00</div>
+            <div class="timer-stats" id="stats-4">Rata-rata waktu pengerjaan ideal kelas 5: <b>25-30 detik per soal</b></div>
+        </div>
+
+        <div class="interactive-grid">
+            <div class="item-box" onclick="showBoxAns(this, '10')">10% dari 100</div>
+            <div class="item-box" onclick="showBoxAns(this, '25')">50% dari 50</div>
+            <div class="item-box" onclick="showBoxAns(this, '15')">25% dari 60</div>
+            <div class="item-box" onclick="showBoxAns(this, '16') Tree">20% dari 80</div>
+            <div class="item-box" onclick="showBoxAns(this, '60')">30% dari 200</div>
+        </div>
+        <div class="slide-number">11 / 16</div>
+    </div>
+
+    <div class="slide" id="slide-12">
+        <h2>Studi Kasus Soal Cerita Persen di Kehidupan Sehari-hari</h2>
+        <p style="margin-bottom: 25px;">Mari kita bantu memecahkan permasalahan yang sering kita jumpai sehari-hari berikut:</p>
+        <div class="grid-2">
+            <div class="card" style="border-top-color: var(--accent);">
+                <div class="badge">Kasus 1: Berburu Diskon Baju</div>
+                <p>Maleeq ingin membeli sebuah baju di toko. Harga baju tersebut adalah <b>Rp150.000,00</b>. Toko tersebut memberikan potongan harga (diskon) sebesar <b>\(20\%\)</b>.</p>
+                <p style="font-weight: bold; margin-top: 15px; color: var(--secondary);">Berapakah jumlah uang potongan harga yang didapatkan Maleeq?</p>
+            </div>
+            <div class="card" style="border-top-color: var(--accent);">
+                <div class="badge">Kasus 2: Persentase Kelulusan</div>
+                <p>Sebuah kelompok belajar memasak memiliki total anggota sebanyak <b>25 orang</b>. Ketika ujian praktik dasar kelulusan, ternyata dinyatakan ada sebanyak <b>\(92\%\)</b> siswa lulus.</p>
+                <p style="font-weight: bold; margin-top: 15px; color: var(--secondary);">Berapa banyak siswa anggota yang dinyatakan sudah lulus?</p>
+            </div>
+        </div>
+        <div class="slide-number">12 / 16</div>
+    </div>
+
+    <div class="slide" id="slide-13">
+        <h2>Pembahasan Jawaban Kasus Soal Cerita</h2>
+        <div class="grid-2">
+            <div>
+                <h3>Solusi Kasus 1 (Diskon Baju)</h3>
+                <p>Kita cari \(20\%\) dari keseluruhan total harga baju:</p>
+                <div class="formula-box" style="flex-direction: column; align-items: flex-start; font-size: 1.2rem;">
+                    <div>\(\text{Diskon} = 20\% \times \text{Rp150.000}\)</div>
+                    <div>\(= \frac{20}{100} \times 150.000\)</div>
+                    <div>\(= 20 \times 1.500\)</div>
+                    <div>\(= \mathbf{\text{Rp30.000,00}}\)</div>
+                </div>
+                <p>Jadi, potongan uang harga yang didapatkan oleh Maleeq adalah sebesar <b>Rp30.000,00</b>.</p>
+            </div>
+            <div>
+                <h3>Solusi Kasus 2 (Jumlah Kelulusan)</h3>
+                <p>Kita hitung kuantitas kelulusan dari total anggota kelompok:</p>
+                <div class="formula-box" style="flex-direction: column; align-items: flex-start; font-size: 1.2rem;">
+                    <div>\(\text{Siswa Lulus} = 92\% \times 25 \text{ orang}\)</div>
+                    <div>\(= \frac{92}{100} \times 25\)</div>
+                    <div>\(= \frac{92}{4} \times 1 \quad (\text{Sama-sama dibagi 25})\)</div>
+                    <div>\(= \mathbf{23 \text{ orang}}\)</div>
+                </div>
+                <p>Jadi, jumlah siswa yang dinyatakan berhasil lulus tes ada sebanyak <b>23 orang</b>.</p>
+            </div>
+        </div>
+        <div class="slide-number">13 / 16</div>
+    </div>
+
+    <div class="slide flex-center" id="slide-14" style="background: #00ADB5 !important; color: white;">
+        <div class="badge" style="background: var(--primary);">UJI KEMAMPUAN MANDIRI</div>
+        <h2>Apakah Kalian Sudah Siap Bertualang?</h2>
+        <p style="max-width: 750px; margin-top: 15px; font-size: 1.4rem;">Sekarang waktunya kita menguji seluruh pemahaman konsep persen yang sudah dipelajari melalui pengerjaan kuis digital berwaktu!</p>
+        <a href="https://wayground.com/admin/quiz/6a32091ca2a4cb7ef26617d1" target="_blank" style="text-decoration: none;">
+            <button class="btn-interactive" style="
+            background: var(--primary); 
+            box-shadow: 0 6px 15px rgba(10,37,64,0.4);">
+            🚀 SIAP, MULAI KUIS!
+        </button>
+    </a>
+        <div class="slide-number">14 / 16</div>
+    </div>
+
+    <div class="slide" id="slide-15">
+        <h2>Refleksi &amp; Kesimpulan Inti Belajar</h2>
+        <div class="card" style="margin-top: 20px;">
+            <h3>Rangkuman Penting Hari Ini:</h3>
+            <ul style="display: flex; flex-direction: column; gap: 15px; margin-top: 15px;">
+                <li><b>Persen</b> artinya adalah <b>per seratus</b>. Lambang persen ditulis dengan simbol tanda <b>%</b>.</li>
+                <li>Pecahan biasa dapat diubah menjadi persen dengan cara mengubah angka penyebutnya menjadi pecahan senilai berpenyebut 100.</li>
+                <li>Menghitung nilai persentase dari sejumlah benda dikerjakan dengan mengubah bentuk persen ke per seratus lalu dikalikan kuantitas bendanya (\(\frac{a}{100} \times \text{Jumlah Benda}\)).</li>
+                <li>Aplikasi persen sangat berguna di kehidupan nyata kita, terutama saat menghitung diskon barang dagangan maupun membaca data statistik.</li>
+            </ul>
+        </div>
+        <div class="slide-number">15 / 16</div>
+    </div>
+
+    <div class="slide dark flex-center" id="slide-16">
+        <h1 style="color: var(--accent); font-size: 4.5rem; letter-spacing: 1px;">LUAR BIASA!</h1>
+        <p style="font-size: 1.8rem; margin-top: 15px; color: #ccc;">"Belajar matematika dengan tekun membuka pintu kesuksesan masa depanmu."</p>
+        <p style="margin-top: 50px; font-weight: bold; font-size: 1.6rem; color: var(--success);">TERIMA KASIH &amp; SAMPAI JUMPA DI MATERI SERU BERIKUTNYA!</p>
+        <div class="slide-number">16 / 16</div>
+    </div>
+
+    <div class="controls">
+        <button class="btn-nav" id="btn-prev" onclick="goToSlide(-1)">Sebelumnya</button>
+        <span class="nav-status" id="nav-text">Slide: 1 / 16</span>
+        <button class="btn-nav" id="btn-next" onclick="goToSlide(1)">Berikutnya</button>
+    </div>
+
+</div>
+
+<script>
+    let currentSlide = 1;
+    const totalSlides = 16;
+    
+    // Objek penyimpan data status timer slide
+    let timers = {};
+
+    function goToSlide(direction) {
+        let target = currentSlide + direction;
+        if (target < 1) target = 1;
+        if (target > totalSlides) target = totalSlides;
+        
+        const targetElement = document.getElementById(`slide-${target}`);
+        if(targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            currentSlide = target;
+            updateMenuText();
+        }
+    }
+
+    function updateMenuText() {
+        document.getElementById('nav-text').innerText = `Slide: ${currentSlide} / 16`;
+    }
+
+    // Fungsi interaktif menampilkan jawaban pada Pamanasan 1
+    function toggleAnswer(cardElement) {
+        const ansBox = cardElement.querySelector('.answer-box');
+        const hintText = cardElement.querySelector('.hint-text');
+        if(ansBox.style.display === 'none') {
+            ansBox.style.display = 'flex';
+            hintText.innerText = 'Klik untuk menyembunyikan';
+        } else {
+            ansBox.style.display = 'none';
+            hintText.innerText = 'Klik untuk cek jawaban';
+        }
+    }
+
+    // Logika Game Memasangkan pada Pemanasan 2
+    let selectedLeft = null;
+    let selectedRight = null;
+    let scoreMatch = 0;
+
+    function selectItem(element, column) {
+        if(element.classList.contains('correct')) return;
+
+        if(column === 'left') {
+            if(selectedLeft) selectedLeft.classList.remove('selected');
+            selectedLeft = element;
+            element.classList.add('selected');
+        } else {
+            if(selectedRight) selectedRight.classList.remove('selected');
+            selectedRight = element;
+            element.classList.add('selected');
+        }
+
+        if(selectedLeft && selectedRight) {
+            if(selectedLeft.getAttribute('data-value') === selectedRight.getAttribute('data-value')) {
+                selectedLeft.classList.replaceAll ? selectedLeft.classList.replaceAll : Object.assign(selectedLeft.className='match-item correct');
+                selectedRight.className='match-item correct';
+                selectedLeft.classList.add('correct');
+                selectedRight.classList.add('correct');
+                scoreMatch++;
+                document.getElementById('game-message').innerText = "Hebat! Pasangan Benar 🎉";
+                if(scoreMatch === 4) {
+                    document.getElementById('game-message').innerText = "Selamat! Semua pasangan berhasil ditemukan! 🏆";
+                }
+            } else {
+                document.getElementById('game-message').innerText = "Ups, coba cari pasangan yang lain ya! ❌";
+                selectedLeft.classList.remove('selected');
+                selectedRight.classList.remove('selected');
+            }
+            selectedLeft = null;
+            selectedRight = null;
+        }
+    }
+
+    // Fungsi Pengendali Fitur Timer Interaktif
+    function startTimer(id) {
+        if(timers[id] && timers[id].interval) return; 
+        
+        timers[id] = {
+            seconds: 0,
+            interval: setInterval(() => {
+                timers[id].seconds++;
+                let mins = Math.floor(timers[id].seconds / 60).toString().padStart(2, '0');
+                let secs = (timers[id].seconds % 60).toString().padStart(2, '0');
+                document.getElementById(`timer-display-${id}`).innerText = `${mins}:${secs}`;
+            }, 1000)
+        };
+    }
+
+    function stopTimer(id) {
+        if(timers[id] && timers[id].interval) {
+            clearInterval(timers[id].interval);
+            let finalTime = timers[id].seconds;
+            let avgTime = (finalTime / 5).toFixed(1); // Mengitung rata-rata waktu pengerjaan per soal (total 5 soal)
+            document.getElementById(`stats-1`).parentNode ? document.getElementById(`stats-${id}`).innerHTML = `Selesai! Total waktu pengerjaan: <b>${finalTime} detik</b>. Rata-rata kecepatan Anda: <b>${avgTime} detik / soal</b>.` : null;
+            timers[id].interval = null;
+        }
+    }
+
+    // Fungsi menampilkan jawaban pada kotak latihan soal interaktif
+    function showBoxAns(element, answerText) {
+        if(!element.getAttribute('data-original')) {
+            element.setAttribute('data-original', element.innerHTML);
+            element.innerHTML = `<span style="color:var(--accent); font-weight:bold;">${answerText}</span>`;
+            element.style.background = '#FFF3CD';
+        } else {
+            element.innerHTML = element.getAttribute('data-original');
+            element.removeAttribute('data-original');
+            element.style.background = '#EDF2F7';
+        }
+    }
+
+    // Event Listener deteksi pergeseran slide manual lewat mouse scroll
+    window.addEventListener('scroll', () => {
+        for (let i = 1; i <= totalSlides; i++) {
+            const el = document.getElementById(`slide-${i}`);
+            if (el) {
+                const rect = el.getBoundingClientRect();
+                if (rect.top >= -150 && rect.top <= 250) {
+                    currentSlide = i;
+                    updateMenuText();
+                    break;
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
