@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eksplorasi Matematika: Persen (Kurikulum Merdeka)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg-main: #f3f4f6;
+            --slide-bg: #ffffff;
+            --text-dark: #1f2937;
+            --text-muted: #6b7280;
+            --primary: #4f46e5;
+            --accent: #6366f1;
+            --border: #e5e7eb;
+            --success: #10b981;
+            --danger: #ef4444;
+            --highlight: #f9fafb;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-main);
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            overflow: hidden;
+        }
+
+        /* Navigasi Global */
+        .global-nav {
+            position: fixed;
+            bottom: 20px;
+            right: 50%;
+            transform: translateX(50%);
+            display: flex;
+            gap: 20px;
+            z-index: 9999;
+            background: rgba(255,255,255,0.9);
+            padding: 10px 25px;
+            border-radius: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--border);
+        }
+        .nav-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .nav-btn:hover { background: var(--accent); transform: scale(1.1); }
+
+        /* Slide Container */
+        .presentation-deck {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+        }
+        .slide {
+            width: 1280px;
+            height: 720px;
+            background-color: var(--slide-bg);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            display: none;
+            flex-direction: column;
+            padding: 50px 70px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .slide.active { display: flex; }
+
+        /* Typography */
+        h1, h2, h3 { font-family: 'Merriweather', serif; color: var(--text-dark); }
+        h1 { font-size: 56px; }
+        .slide-title { font-size: 34px; margin-bottom: 25px; border-bottom: 4px solid var(--primary); padding-bottom: 8px; width: fit-content; }
+        p, li { font-size: 19px; color: var(--text-muted); line-height: 1.6; }
+
+        /* Content Area */
+        .content-area { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .card { background: white; padding: 25px; border-radius: 16px; border: 1px solid var(--border); }
+
+        /* Form Elements */
+        .input-box { padding: 12px 15px; border: 2px solid var(--border); border-radius: 10px; font-size: 18px; width: 100%; outline: none; font-weight: 600; }
+        .btn-check { background: var(--primary); color: white; border: none; padding: 12px 24px; border-radius: 10px; font-size: 15px; font-weight: bold; cursor: pointer; transition: 0.2s; white-space: nowrap; }
+        .btn-check:hover { background: var(--accent); }
+
+        /* Fractions */
+        .math-frac { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; font-weight: bold; padding: 0 5px; color: var(--text-dark); }
+        .math-frac span:first-child { border-bottom: 2px solid var(--text-dark); }
+
+        /* Drills */
+        .drill-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .drill-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 18px; background: var(--highlight); border-radius: 12px; border: 1px solid var(--border); }
+
+        /* SLIDE 11: REVISED LAYOUT */
+        .game-container {
+            display: grid;
+            grid-template-columns: 420px 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        .math-card {
+            height: 75px;
+            background: #eef2ff;
+            color: var(--primary);
+            border: 2px solid #c7d2fe;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .math-card:hover:not(.solved) { background: var(--primary); color: white; transform: translateY(-3px); }
+        .math-card.solved { background: #f3f4f6 !important; color: #d1d5db !important; border-color: #e5e7eb !important; cursor: default; }
+
+        .game-arena {
+            background: #f9fafb;
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid var(--primary);
+            min-height: 480px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .timer-badge { background: #fee2e2; color: var(--danger); padding: 8px 18px; border-radius: 15px; font-weight: 800; font-size: 22px; display: inline-flex; align-items: center; gap: 8px; }
+    </style>
+</head>
+<body>
+
+<div class="presentation-deck">
+    
+    <div class="slide active" id="slide1">
+        <div class="content-area" style="text-align: center;">
+            <p style="text-transform: uppercase; letter-spacing: 4px; font-weight: 700; color: var(--primary); margin-bottom: 10px;">Matematika Fase D</p>
+            <h1>Menguasai Konsep Persen</h1>
+            <p style="font-size: 26px; font-style: italic; color: var(--text-muted); margin-bottom: 50px;">Eksplorasi Pecahan, Desimal, dan Persen dalam Kehidupan</p>
+            <div class="card" style="display: inline-block; padding: 40px; width: 500px; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                <label style="display: block; font-weight: 700; margin-bottom: 10px; font-size: 14px;">NAMA LENGKAP SISWA :</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="studentName" class="input-box" placeholder="Ketik namamu..." style="flex-grow: 1;">
+                    <button class="btn-check" onclick="startPresentation()">MASUK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide" id="slide2">
+        <h2 class="slide-title">Tujuan Pembelajaran</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div class="card" style="border-left: 8px solid var(--primary);">
+                    <h3 style="margin-bottom: 15px;">Capaian Belajar</h3>
+                    <ul style="padding-left: 20px;">
+                        <li style="margin-bottom: 10px;">Memahami definisi persen sebagai per seratus.</li>
+                        <li style="margin-bottom: 10px;">Mampu mengubah pecahan dan desimal menjadi persen secara bolak-balik.</li>
+                        <li>Menyelesaikan masalah kontekstual berupa nilai diskon, keuntungan, maupun kerugian.</li>
+                    </ul>
+                </div>
+                <div class="card" style="text-align: center; background: #eef2ff;">
+                    <i class="fa-solid fa-graduation-cap" style="font-size: 100px; color: var(--primary);"></i>
+                    <p style="margin-top: 20px; font-weight: 600;">Persen adalah keterampilan hidup yang penting!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide" id="slide3">
+        <h2 class="slide-title">Pemanasan: Pecahan & Desimal</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div class="card" id="warmCard1" style="text-align: center;">
+                    <p style="margin-bottom: 15px;">Ubahlah bentuk pecahan <div class="math-frac"><span>1</span><span>5</span></div> menjadi bilangan desimal.</p>
+                    <input type="text" id="warmIn1" class="input-box" style="text-align: center; margin-bottom: 15px;" placeholder="0,..."><br>
+                    <button class="btn-check" onclick="checkWarmUp(1, '0.2', 'warmIn1', 'warmCard1')">Cek Jawaban</button>
+                </div>
+                <div class="card" id="warmCard2" style="text-align: center;">
+                    <p style="margin-bottom: 15px;">Ubahlah bentuk desimal <b>0,75</b> menjadi pecahan paling sederhana.</p>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 15px;">
+                        <input type="number" id="warmIn2N" class="input-box" style="width: 80px;" placeholder="Atas">
+                        <span style="font-size: 30px;">/</span>
+                        <input type="number" id="warmIn2D" class="input-box" style="width: 80px;" placeholder="Bawah">
+                    </div>
+                    <button class="btn-check" onclick="checkWarmUpFrac(2, 3, 4, 'warmIn2N', 'warmIn2D', 'warmCard2')">Cek Jawaban</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide" id="slide4">
+        <h2 class="slide-title">Apa Itu Persen?</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div>
+                    <h1 style="font-size: 120px; color: var(--primary);">%</h1>
+                    <p style="font-size: 24px; font-weight: 700;">Persen sama dengan Per Seratus</p>
+                    <p>Berasal dari bahasa Latin yaitu <i>"Per Centum"</i>. Istilah ini digunakan untuk membandingkan suatu jumlah terhadap standar angka 100.</p>
+                </div>
+                <div class="card" style="background: var(--highlight);">
+                    <h3 style="margin-bottom: 10px;">Contoh Nyata:</h3>
+                    <ul>
+                        <li>Diskon nilai belanja sebesar 25% di toko pakaian.</li>
+                        <li>Daya baterai telepon genggam yang tersisa sebesar 5%.</li>
+                        <li>Kewajiban Zakat Mal sebesar 2,5% dari total harta.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide" id="slide5">
+        <h2 class="slide-title">Mengubah Pecahan ke Persen</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div class="card">
+                    <p><b>Cara 1: Mengubah penyebut menjadi per 100</b></p>
+                    <div style="font-size: 24px; text-align: center; margin: 20px 0;">
+                        <div class="math-frac"><span>2</span><span>5</span></div> = <div class="math-frac"><span>40</span><span>100</span></div> = 40%
+                    </div>
+                </div>
+                <div class="card">
+                    <p><b>Cara 2: Mengalikan langsung dengan angka 100%</b></p>
+                    <div style="font-size: 24px; text-align: center; margin: 20px 0;">
+                        <div class="math-frac"><span>3</span><span>4</span></div> &times; 100% = 75%
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide" id="slide6">
+        <h2 class="slide-title">Latihan: Pecahan ke Persen</h2>
+        <div class="content-area">
+            <div class="drill-grid" id="gridDrill6"></div>
+        </div>
+    </div>
+
+    <div class="slide" id="slide7">
+        <h2 class="slide-title">Mengubah Desimal ke Persen</h2>
+        <div class="content-area">
+            <div class="card" style="text-align: center;">
+                <p style="font-size: 24px;">Geser posisi tanda koma sebanyak <b>2 langkah ke belakang</b>.</p>
+                <h1 style="margin: 30px 0; color: var(--primary);">Nilai 0,125 sama dengan 12,5%</h1>
+                <p>Sebaliknya, untuk mengubah persen ke desimal, geser tanda koma sebanyak 2 langkah ke depan.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide" id="slide8">
+        <h2 class="slide-title">Latihan: Desimal ke Persen</h2>
+        <div class="content-area">
+            <div class="drill-grid" id="gridDrill8"></div>
+        </div>
+    </div>
+
+    <div class="slide" id="slide9">
+        <h2 class="slide-title">Persen dalam Transaksi: Untung & Rugi</h2>
+        <div class="content-area">
+            <div class="card" style="border-left: 10px solid var(--success);">
+                <p style="font-size: 22px;">Budi membeli sebuah mainan seharga <b>Rp 100.000</b>. Mainan tersebut kemudian dijual kembali dengan mendapatkan **keuntungan sebesar 20%**.</p>
+                <div style="margin-top: 20px; padding: 20px; background: var(--highlight); border-radius: 10px;">
+                    <p>Nilai Keuntungan = 20/100 &times; 100.000 = <b>Rp 20.000</b></p>
+                    <p>Total Harga Jual Akhir = 100.000 + 20.000 = <b>Rp 120.000</b></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide" id="slide10">
+        <h2 class="slide-title">Tantangan Soal Cerita</h2>
+        <div class="content-area">
+            <div class="card" id="sandboxCard">
+                <p id="sandBadge" style="font-weight: 800; color: var(--primary);"></p>
+                <p id="sandText" style="font-size: 22px; font-weight: 600; margin: 20px 0;"></p>
+                <div style="display: flex; gap: 15px;">
+                    <input type="number" id="sandIn" class="input-box" placeholder="Jawaban angka...">
+                    <button class="btn-check" onclick="checkSandbox()">Cek</button>
+                    <button class="btn-check" style="background: var(--text-muted);" onclick="toggleSandboxHelp()">Solusi</button>
+                </div>
+                <div id="sandHelp" style="display:none; margin-top: 15px; padding: 15px; background: #fffbeb; border: 1px solid #fef3c7;"></div>
+                <button class="btn-check" style="margin-top: 20px; background: #6b7280;" onclick="nextSandbox()">Soal Lainnya</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide" id="slide11">
+        <h2 class="slide-title">Game: 20 Kartu Ajaib</h2>
+        <div class="content-area">
+            <div class="game-container">
+                <div class="card-grid-container">
+                    <div class="card-grid" id="gameGrid"></div>
+                </div>
+
+                <div class="game-arena-container">
+                    <div id="gameArena" class="game-arena" style="display:none;">
+                        <div>
+                            <div style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                                <div class="timer-badge"><i class="fa-solid fa-clock"></i> <span id="gameTimer">03:00</span></div>
+                                <button class="btn-check" id="btnStartGame" onclick="startGameTimer()" style="background: var(--success);">MULAI WAKTU</button>
+                            </div>
+                            <p id="gameQ" style="font-weight: 700; font-size: 22px; color: var(--text-dark); line-height: 1.5;"></p>
+                        </div>
+
+                        <div>
+                            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                                <input type="number" step="any" id="gameIn" class="input-box" placeholder="Ketik jawaban...">
+                                <button class="btn-check" id="btnSubmitGame" onclick="submitGameAnswer()">KIRIM</button>
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <button class="btn-check" style="background: var(--text-muted); flex: 1;" onclick="showGameHint()">PEMBAHASAN</button>
+                                <button class="btn-check" style="background: var(--accent); flex: 1;" onclick="addGameTime()">+15 DETIK</button>
+                            </div>
+                            <div id="gameHint" style="display:none; margin-top: 15px; font-style: italic; color: var(--primary); background: #eef2ff; padding: 10px; border-radius: 10px;"></div>
+                        </div>
+                    </div>
+                    <div id="gamePlaceholder" style="height: 100%; display: flex; align-items: center; justify-content: center; background: #f3f4f6; border-radius: 20px; border: 2px dashed #d1d5db; padding: 20px; text-align: center;">
+                        <p id="placeholderText">Pilih nomor kartu di samping untuk memulai tantangan!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide" id="slide12">
+        <h2 class="slide-title">Hasil Analisis Belajarmu</h2>
+        <div class="content-area">
+            <div class="grid-2">
+                <div class="card" style="max-height: 450px; overflow-y: auto;">
+                    <h3 style="margin-bottom: 15px;">Waktu per Kartu:</h3>
+                    <div id="logList"></div>
+                </div>
+                <div class="card" style="text-align: center; background: #f5f3ff;">
+                    <i class="fa-solid fa-gauge-simple-high" style="font-size: 80px; color: var(--primary);"></i>
+                    <p style="margin-top: 20px;">Rata-rata Waktu Kerja:</p>
+                    <h1 id="avgTime" style="font-size: 80px; color: var(--primary);">--</h1>
+                    <p>detik</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide" id="slide13">
+        <h2 class="slide-title">Refleksi Belajar</h2>
+        <div class="content-area">
+            <div class="card">
+                <p>1. Konsep apa yang paling kamu pahami mengenai materi persen hari ini?</p>
+                <p style="margin-top: 20px;">2. Bagaimana langkah tercepatmu dalam menghitung diskon sebesar 50% tanpa bantuan kalkulator?</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide" id="slide14" style="text-align: center; justify-content: center; background: var(--primary); color: white;">
+        <h1 style="color: white; font-size: 72px;">Sampai Jumpa!</h1>
+        <p style="font-size: 24px; margin-top: 20px;">Kamu telah sukses menyelesaikan seluruh misi eksplorasi konsep persen.</p>
+    </div>
+
+    <div class="global-nav">
+        <button class="nav-btn" onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i></button>
+        <div id="slideIndicator">1 / 14</div>
+        <button class="nav-btn" onclick="nextSlide()"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+
+</div>
+
+<script>
+    let curS = 1;
+    const totalS = 14;
+    let studentName = "";
+    
+    const d6Data = [
+        {q: "1/2 ke %", a: "50"}, {q: "75% ke Pecahan", a: "3/4"},
+        {q: "1/4 ke %", a: "25"}, {q: "20% ke Pecahan", a: "1/5"},
+        {q: "2/5 ke %", a: "40"}, {q: "10% ke Pecahan", a: "1/10"},
+        {q: "3/10 ke %", a: "30"}, {q: "60% ke Pecahan", a: "3/5"},
+        {q: "1/100 ke %", a: "1"}, {q: "25% ke Pecahan", a: "1/4"}
+    ];
+    const d8Data = [
+        {q: "0,5 ke %", a: "50"}, {q: "12% ke Desimal", a: "0,12"},
+        {q: "0,08 ke %", a: "8"}, {q: "45% ke Desimal", a: "0,45"},
+        {q: "0,9 ke %", a: "90"}, {q: "150% ke Desimal", a: "1,5"},
+        {q: "1,2 ke %", a: "120"}, {q: "6% ke Desimal", a: "0,06"},
+        {q: "0,3 ke %", a: "30"}, {q: "5% ke Desimal", a: "0,05"}
+    ];
+
+    const sandBank = [
+        {q: "Sebuah kelas berisi 40 siswa. Sebanyak 25% di antaranya menyukai cokelat. Berapa jumlah siswa yang menyukai cokelat?", a: 10, h: "25/100 x 40 = 10"},
+        {q: "Sepatu seharga Rp 200.000 mendapatkan potongan diskon sebesar 15%. Berapa rupiah nilai potongan tersebut?", a: 30000, h: "15/100 x 200.000 = 30.000"},
+        {q: "Ibu memiliki 50 buah mangga, ternyata 10% di antaranya membusuk. Berapa buah mangga yang membusuk?", a: 5, h: "10/100 x 50 = 5"},
+        {q: "Tabungan sebesar Rp 1.000.000 mendapatkan bunga bank sebesar 5% dalam setahun. Berapa rupiah nilai bunga yang diperoleh?", a: 50000, h: "5/100 x 1.000.000 = 50.000"},
+        {q: "Dari total 80 soal ujian, Andi menjawab benar sebanyak 90%. Berapa butir soal yang berhasil dijawab benar?", a: 72, h: "90/100 x 80 = 72"}
+    ];
+
+    const cardsData = [
+        {q: "Berapakah hasil dari 1/2 + 25% jika dinyatakan dalam bentuk desimal?", a: 0.75, h: "0.5 + 0.25 = 0.75"},
+        {q: "Baju seharga Rp 100.000 mendapat diskon 20%. Berapakah harga akhir yang harus dibayar?", a: 80000, h: "100.000 - 20.000 = 80.000"},
+        {q: "Berapakah nilai dari 10% dari 5.000?", a: 500, h: "1/10 x 5.000 = 500"},
+        {q: "Nyatakan pecahan 3/4 ke dalam bentuk persen.", a: 75, h: "0.75 x 100 = 75%"},
+        {q: "Nyatakan bentuk desimal 0,08 ke dalam bentuk persen.", a: 8, h: "0.08 x 100 = 8%"},
+        {q: "Nyatakan bentuk persen 120% ke dalam bentuk desimal.", a: 1.2, h: "120 / 100 = 1.2"},
+        {q: "Budi menjawab benar 18 dari total 20 soal. Berapakah persentase nilai benarnya?", a: 90, h: "18/20 x 100 = 90%"},
+        {q: "Berapakah nilai persen dari setengahnya 10%?", a: 5, h: "5%"},
+        {q: "Jika nilai dari 10% adalah 20, berapakah nilai penuh atau 100%-nya?", a: 200, h: "20 x 10 = 200"},
+        {q: "Barang seharga 50.000 dijual dengan keuntungan 10%. Berapakah harga jualnya?", a: 55000, h: "50.000 + 5.000 = 55.000"},
+        {q: "Nyatakan pecahan 1/8 ke dalam bentuk desimal.", a: 0.125, h: "1 dibagi dengan 8 = 0.125"},
+        {q: "Toko memberi diskon bertingkat 50% + 50%. Apakah barangnya gratis? (Ketik 0 jika gratis, ketik 25 jika bayar 25%)", a: 25, h: "Diskon bertingkat dihitung satu per satu dari sisa harga, bukan dijumlahkan langsung."},
+        {q: "Ubah desimal 0,33 menjadi bentuk persen.", a: 33, h: "33%"},
+        {q: "Berapakah nilai dari 1% dari uang 1 Juta rupiah?", a: 10000, h: "10.000"},
+        {q: "Nyatakan pecahan 1/5 ke dalam bentuk persen.", a: 20, h: "20%"},
+        {q: "Menderita kerugian sebesar 5.000 dari modal beli sebesar 50.000. Berapa persen ruginya?", a: 10, h: "5.000 / 50.000 x 100 = 10%"},
+        {q: "Mendapat keuntungan 100% dari modal Rp 5.000, berarti total uang yang diterima adalah Rp...", a: 10000, h: "5.000 + 5.000 = 10.000"},
+        {q: "Ubah bilangan desimal 0,7 menjadi bentuk persen.", a: 70, h: "70%"},
+        {q: "Nyatakan persen 250% ke dalam bentuk desimal.", a: 2.5, h: "2.5"},
+        {q: "Uang Rp 400 mendapatkan potongan diskon sebesar 25%, berapakah sisanya?", a: 300, h: "400 - 100 = 300"}
+    ];
+
+    let currentCardIdx = -1;
+    let cardStartTime;
+    let gameTimer;
+    let timeLeft = 180;
+    const cardLogs = [];
+    const solvedCards = new Set();
+
+    function startPresentation() {
+        studentName = document.getElementById('studentName').value.trim() || "Siswa Hebat";
+        nextSlide();
+    }
+
+    function goToSlide(n) {
+        if(n < 1 || n > totalS) return;
+        document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+        document.getElementById(`slide${n}`).classList.add('active');
+        document.getElementById('slideIndicator').innerText = `${n} / ${totalS}`;
+        curS = n;
+
+        if(n === 6) renderDrill('gridDrill6', d6Data);
+        if(n === 8) renderDrill('gridDrill8', d8Data);
+        if(n === 10) nextSandbox();
+        if(n === 11) renderGameGrid();
+    }
+
+    function nextSlide() { goToSlide(curS + 1); }
+    function prevSlide() { goToSlide(curS - 1); }
+
+    function speak(txt) {
+        if ('speechSynthesis' in window) {
+            const msg = new SpeechSynthesisUtterance(txt);
+            msg.lang = 'id-ID';
+            window.speechSynthesis.speak(msg);
+        }
+    }
+
+    function playSound(type) {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain); gain.connect(ctx.destination);
+        if(type === 'correct') {
+            osc.frequency.setValueAtTime(523, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.3);
+        } else {
+            osc.frequency.setValueAtTime(200, ctx.currentTime);
+            osc.frequency.linearRampToValueAtTime(100, ctx.currentTime + 0.3);
+        }
+        gain.gain.setValueAtTime(0.1, ctx.currentTime);
+        osc.start(); osc.stop(ctx.currentTime + 0.3);
+    }
+
+    function renderDrill(gridId, items) {
+        const grid = document.getElementById(gridId);
+        grid.innerHTML = "";
+        items.forEach((it, i) => {
+            grid.innerHTML += `
+                <div class="drill-item" id="${gridId}_item${i}">
+                    <span><b>${it.q}</b></span>
+                    <div style="display:flex; gap:10px;">
+                        <input type="text" id="${gridId}_in${i}" class="input-box" style="width:80px; font-size:16px;">
+                        <button class="btn-check" style="padding:5px 15px;" onclick="checkDrill('${gridId}', ${i}, '${it.a}')">Cek</button>
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    function checkDrill(gridId, idx, correct) {
+        const val = document.getElementById(`${gridId}_in${idx}`).value.trim().replace(',', '.');
+        const item = document.getElementById(`${gridId}_item${idx}`);
+        if(val.toLowerCase() === correct.toLowerCase()) {
+            item.style.borderColor = "var(--success)";
+            item.style.background = "#f0fdf4";
+            playSound('correct');
+        } else {
+            item.style.borderColor = "var(--danger)";
+            item.style.background = "#fef2f2";
+            playSound('wrong');
+        }
+    }
+
+    function checkWarmUp(id, corr, inId, cardId) {
+        const val = document.getElementById(inId).value.trim().replace(',', '.');
+        const card = document.getElementById(cardId);
+        if(val === corr) {
+            card.style.background = "#f0fdf4";
+            speak("Bagus sekali " + studentName);
+            playSound('correct');
+        } else {
+            card.style.background = "#fef2f2";
+            speak("Ayo coba lagi ya");
+            playSound('wrong');
+        }
+    }
+
+    function checkWarmUpFrac(id, cn, cd, nid, did, cid) {
+        const n = parseInt(document.getElementById(nid).value);
+        const d = parseInt(document.getElementById(did).value);
+        const card = document.getElementById(cid);
+        if(n === cn && d === cd) {
+            card.style.background = "#f0fdf4";
+            speak("Kerja bagus " + studentName);
+            playSound('correct');
+        } else {
+            card.style.background = "#fef2f2";
+            speak("Ayo coba lagi");
+            playSound('wrong');
+        }
+    }
+
+    function nextSandbox() {
+        const currentSand = Math.floor(Math.random() * sandBank.length);
+        window.activeSand = sandBank[currentSand];
+        document.getElementById('sandBadge').innerText = "SOAL CERITA";
+        document.getElementById('sandText').innerText = window.activeSand.q;
+        document.getElementById('sandIn').value = "";
+        document.getElementById('sandHelp').style.display = "none";
+        document.getElementById('sandboxCard').style.background = "white";
+    }
+
+    function checkSandbox() {
+        const val = parseFloat(document.getElementById('sandIn').value);
+        if(val === window.activeSand.a) {
+            document.getElementById('sandboxCard').style.background = "#f0fdf4";
+            speak("Hebat " + studentName + ", jawaban kamu benar");
+            playSound('correct');
+        } else {
+            document.getElementById('sandboxCard').style.background = "#fef2f2";
+            speak("Jawabanmu masih kurang tepat");
+            playSound('wrong');
+        }
+    }
+
+    function toggleSandboxHelp() {
+        const el = document.getElementById('sandHelp');
+        el.innerText = "Langkah Penyelesaian: " + window.activeSand.h;
+        el.style.display = el.style.display === "none" ? "block" : "none";
+    }
+
+    function renderGameGrid() {
+        const grid = document.getElementById('gameGrid');
+        grid.innerHTML = "";
+        cardsData.forEach((c, i) => {
+            const solved = solvedCards.has(i);
+            grid.innerHTML += `<div class="math-card ${solved ? 'solved' : ''}" id="mcard_${i}" onclick="openCard(${i})">${i+1}</div>`;
+        });
+    }
+
+    function openCard(i) {
+        if(solvedCards.has(i)) return;
+        currentCardIdx = i;
+        
+        // Reset visual arena ke keadaan aktif normal
+        const arena = document.getElementById('gameArena');
+        arena.style.display = "flex";
+        arena.style.backgroundColor = "#f9fafb";
+        arena.style.borderColor = "var(--primary)";
+        
+        document.getElementById('gamePlaceholder').style.display = "none";
+        document.getElementById('gameQ').innerText = cardsData[i].q;
+        
+        // Mengaktifkan kembali kontrol input jika sebelumnya terkunci akibat jawaban benar
+        const inputEl = document.getElementById('gameIn');
+        inputEl.value = "";
+        inputEl.disabled = false;
+        
+        const submitBtn = document.getElementById('btnSubmitGame');
+        submitBtn.disabled = false;
+        submitBtn.style.background = "var(--primary)";
+        
+        document.getElementById('gameHint').style.display = "none";
+        document.getElementById('btnStartGame').style.display = "block";
+        
+        clearInterval(gameTimer);
+        timeLeft = 180;
+        updateTimerDisplay();
+    }
+
+    function startGameTimer() {
+        document.getElementById('btnStartGame').style.display = "none";
+        cardStartTime = Date.now();
+        gameTimer = setInterval(() => {
+            timeLeft--;
+            updateTimerDisplay();
+            if(timeLeft <= 0) { 
+                clearInterval(gameTimer); 
+                alert("Batas waktu mengerjakan telah habis!"); 
+            }
+        }, 1000);
+    }
+
+    function updateTimerDisplay() {
+        const m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+        const s = (timeLeft % 60).toString().padStart(2, '0');
+        document.getElementById('gameTimer').innerText = `${m}:${s}`;
+    }
+
+    function addGameTime() { timeLeft += 15; updateTimerDisplay(); }
+
+    function submitGameAnswer() {
+        if(!cardStartTime) return alert("Silakan tekan tombol MULAI WAKTU terlebih dahulu!");
+        const val = parseFloat(document.getElementById('gameIn').value.toString().replace(',', '.'));
+        const correct = cardsData[currentCardIdx].a;
+        
+        if(val === correct) {
+            clearInterval(gameTimer);
+            const duration = Math.floor((Date.now() - cardStartTime) / 1000);
+            cardLogs.push({id: currentCardIdx+1, time: duration});
+            solvedCards.add(currentCardIdx);
+            
+            speak("Jawaban kamu tepat sekali " + studentName);
+            playSound('correct');
+            
+            // Mengubah visual arena menjadi sukses tanpa menghilangkan datanya langsung
+            const arena = document.getElementById('gameArena');
+            arena.style.backgroundColor = "#f0fdf4";
+            arena.style.borderColor = "var(--success)";
+            
+            // Mengunci elemen agar tidak di-submit ulang sebelum memilih kartu baru
+            document.getElementById('gameIn').disabled = true;
+            const submitBtn = document.getElementById('btnSubmitGame');
+            submitBtn.disabled = true;
+            submitBtn.style.background = "#a7f3d0";
+            
+            renderGameGrid();
+            updateAnalytics();
+        } else {
+            speak("Jawaban belum tepat, silakan coba lagi");
+            playSound('wrong');
+        }
+    }
+
+    function showGameHint() {
+        const el = document.getElementById('gameHint');
+        el.innerText = "Pembahasan: " + cardsData[currentCardIdx].h;
+        el.style.display = "block";
+    }
+
+    function updateAnalytics() {
+        const list = document.getElementById('logList');
+        list.innerHTML = "";
+        let total = 0;
+        cardLogs.forEach(l => {
+            total += l.time;
+            list.innerHTML += `<p><b>Kartu Misi #${l.id}:</b> Selesai dalam ${l.time} detik</p>`;
+        });
+        const avg = cardLogs.length > 0 ? Math.round(total / cardLogs.length) : 0;
+        document.getElementById('avgTime').innerText = avg;
+    }
+</script>
+
+</body>
+</html>
