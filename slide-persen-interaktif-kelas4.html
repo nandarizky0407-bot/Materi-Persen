@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Misi Persen 🚀 Penggunaan Persen dalam Kehidupan Sehari-hari — Kelas 4 SD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:ital,wght@0,400;0,700;0,800;0,900;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg1:#070B2A; --bg2:#0D1440;
+  --card:rgba(255,255,255,.065);
+  --card2:rgba(255,255,255,.10);
+  --line:rgba(255,255,255,.14);
+  --ink:#EDF2FF; --muted:#A9B6E8;
+  --cyan:#4DD9FF; --purple:#A78BFA; --pink:#FF6EC7;
+  --yellow:#FFD166; --green:#5EE6A8; --orange:#FFA45C;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:'Nunito','Segoe UI',system-ui,-apple-system,sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(1100px 750px at 85% -10%, #1C2C6E 0%, transparent 60%),
+    radial-gradient(950px 700px at -10% 110%, #2A1657 0%, transparent 55%),
+    linear-gradient(160deg,#070B2A 0%,#0D1440 55%,#0A0F33 100%);
+  background-attachment:fixed;
+  overflow:hidden;
+}
+::selection{background:rgba(167,139,250,.5)}
+/* ===== Bintang & dekorasi antariksa ===== */
+#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+#stars i{position:absolute;border-radius:50%;background:#fff;display:block}
+.deco{position:fixed;z-index:0;pointer-events:none;user-select:none;filter:drop-shadow(0 6px 18px rgba(0,0,0,.4))}
+.deco.d1{top:72px;right:4%;font-size:56px;opacity:.95}
+.deco.d2{bottom:110px;left:3%;font-size:44px;opacity:.9}
+.deco.d3{top:40%;right:2.5%;font-size:34px;opacity:.75}
+.deco.d4{bottom:130px;right:8%;font-size:30px;opacity:.7}
+.deco.d5{top:18%;left:5%;font-size:26px;opacity:.65}
+@media (max-width:900px){.deco{display:none}}
+/* ===== Topbar ===== */
+.topbar{position:fixed;top:0;left:0;right:0;height:62px;z-index:60;display:flex;align-items:center;gap:14px;
+  padding:0 18px;background:rgba(7,11,42,.78);backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,.09)}
+.brand{font-family:'Fredoka','Nunito',sans-serif;font-weight:600;font-size:1rem;white-space:nowrap;display:flex;align-items:center;gap:8px}
+.brand .mini{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#4DD9FF33,#A78BFA33);border:1px solid var(--line)}
+.progress{flex:1;height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;min-width:80px}
+.progress>i{display:block;height:100%;width:0;border-radius:999px;transition:width .35s ease;
+  background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink))}
+.counter{font-weight:800;font-size:.9rem;color:var(--muted);white-space:nowrap}
+.menu-btn{cursor:pointer;border:1px solid var(--line);background:var(--card2);color:var(--ink);
+  border-radius:12px;padding:8px 12px;font-weight:800;font-size:.9rem;font-family:inherit;transition:background .25s,border-color .25s}
+.menu-btn:hover{background:rgba(167,139,250,.25);border-color:var(--purple)}
+@media (max-width:640px){.brand span.txt{display:none}.counter{display:none}}
+/* ===== Deck & slide ===== */
+.deck{position:fixed;inset:0;z-index:10}
+.slide{position:absolute;inset:0;overflow-y:auto;display:none;padding:86px 22px 128px}
+.slide.active{display:block;animation:fadeSlide .5s ease}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.wrap{max-width:1040px;margin:0 auto}
+.center{min-height:calc(100vh - 214px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+/* ===== Tipografi ===== */
+.eyebrow{color:var(--cyan);font-weight:900;letter-spacing:2.5px;text-transform:uppercase;font-size:.78rem;margin-bottom:8px}
+.eyebrow.pink{color:var(--pink)} .eyebrow.yellow{color:var(--yellow)}
+h1.big{font-family:'Fredoka','Nunito',sans-serif;font-weight:600;font-size:clamp(1.9rem,4.6vw,3.1rem);line-height:1.18;margin-bottom:12px}
+h2.title{font-family:'Fredoka','Nunito',sans-serif;font-weight:600;font-size:clamp(1.45rem,3vw,2.05rem);line-height:1.25;margin-bottom:14px}
+.lead{color:var(--muted);font-size:1.05rem;line-height:1.65}
+.grad{background:linear-gradient(90deg,var(--cyan),var(--purple) 45%,var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+p.body{line-height:1.7;margin-bottom:12px}
+/* ===== Kartu & komponen ===== */
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px 22px}
+.card.solid{background:rgba(20,28,74,.55)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.tip{border-left:5px solid var(--yellow);background:rgba(255,209,102,.09);border-radius:14px;padding:13px 16px;line-height:1.6}
+.tip b{color:var(--yellow)}
+.formula{display:inline-block;font-weight:900;font-size:1.06rem;background:rgba(77,217,255,.12);
+  border:1.5px dashed rgba(77,217,255,.55);border-radius:14px;padding:10px 16px;line-height:1.55}
+.chip{display:inline-flex;align-items:center;gap:7px;background:var(--card2);border:1px solid var(--line);
+  border-radius:999px;padding:7px 14px;font-weight:800;font-size:.92rem}
+.btn{cursor:pointer;border:none;font-family:inherit;font-weight:900;font-size:1rem;color:#081033;
+  background:linear-gradient(90deg,var(--cyan),#7CE7FF);border-radius:999px;padding:13px 26px;
+  box-shadow:0 8px 22px rgba(77,217,255,.28);transition:transform .22s,box-shadow .22s,filter .22s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.btn.purple{background:linear-gradient(90deg,var(--purple),#C4B1FF);box-shadow:0 8px 22px rgba(167,139,250,.3);color:#170B33}
+.btn.pink{background:linear-gradient(90deg,var(--pink),#FF9AD1);box-shadow:0 8px 22px rgba(255,110,199,.3);color:#3A0A24}
+.btn.ghost{background:var(--card2);color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.steps{list-style:none;display:flex;flex-direction:column;gap:9px;margin-top:10px}
+.steps li{display:flex;gap:11px;align-items:flex-start;line-height:1.6}
+.steps .n{flex:0 0 26px;height:26px;border-radius:9px;display:grid;place-items:center;font-weight:900;font-size:.85rem;
+  background:rgba(167,139,250,.22);color:#D7C8FF;border:1px solid rgba(167,139,250,.5)}
+.tag{display:inline-block;font-size:.72rem;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 10px;margin-bottom:8px}
+/* Grid 100 kotak (visual 25%) */
+.grid100{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;width:100%;max-width:330px;margin:8px auto}
+.grid100 i{aspect-ratio:1;border-radius:4px;background:rgba(255,255,255,.10)}
+.grid100 i.on{background:linear-gradient(135deg,var(--pink),var(--purple))}
+/* Tabel sahabat persen */
+.tbl{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border-radius:16px;border:1px solid var(--line)}
+.tbl th,.tbl td{padding:11px 14px;text-align:center;font-weight:800}
+.tbl th{background:rgba(77,217,255,.14);color:#CFF3FF;font-family:'Fredoka',sans-serif;font-weight:600;letter-spacing:.5px}
+.tbl td{background:rgba(255,255,255,.05);border-top:1px solid rgba(255,255,255,.08)}
+.tbl tr td:first-child{color:var(--yellow)}
+/* Kartu flip apersepsi */
+.flip{perspective:1100px;cursor:pointer;min-height:185px;outline:none}
+.flip-inner{position:relative;width:100%;height:100%;min-height:185px;transition:transform .55s;transform-style:preserve-3d}
+.flip.flipped .flip-inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:18px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;gap:8px}
+.face.front{background:var(--card2);border:1px solid var(--line)}
+.face.front .em{font-size:2.5rem}
+.face.front .w{font-weight:900;font-size:1.12rem}
+.face.front small{color:var(--muted);font-weight:700}
+.face.back{transform:rotateY(180deg);background:linear-gradient(150deg,rgba(167,139,250,.28),rgba(77,217,255,.18));
+  border:1px solid rgba(167,139,250,.55);font-weight:800;line-height:1.55}
+/* Kuis */
+.quiz{max-width:780px;margin:0 auto}
+.q-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.score-chip{background:rgba(255,209,102,.14);border:1px solid rgba(255,209,102,.5);color:#FFE7AE}
+.done-chip{background:rgba(94,230,168,.13);border:1px solid rgba(94,230,168,.5);color:#C4F7DE}
+.dots{display:flex;gap:7px;flex-wrap:wrap;margin:16px 0 0}
+.dot{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:.9rem;
+  background:rgba(255,255,255,.08);border:2px solid transparent;color:var(--muted);cursor:pointer;font-family:inherit;transition:transform .2s,background .2s}
+.dot:hover{transform:scale(1.1)}
+.dot.cur{border-color:var(--cyan);color:#fff;background:rgba(77,217,255,.16)}
+.dot.ok{background:rgba(94,230,168,.85);color:#083B24}
+.dot.miss{background:rgba(255,164,92,.75);color:#4A2504}
+.q-card{margin-top:16px}
+.q-text{font-size:1.22rem;font-weight:800;line-height:1.6}
+.ans-row{display:flex;gap:10px;margin-top:15px;flex-wrap:wrap}
+input.ans{flex:1;min-width:190px;padding:14px 16px;border-radius:14px;border:2px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.08);color:#fff;font-size:1.12rem;font-weight:800;font-family:inherit}
+input.ans::placeholder{color:rgba(233,240,255,.45);font-weight:600}
+input.ans:focus{outline:none;border-color:var(--cyan)}
+input.ans:disabled{opacity:.65}
+.fb{margin-top:13px;font-weight:800;display:none;border-radius:14px;padding:12px 15px;line-height:1.55}
+.fb.good{display:block;background:rgba(94,230,168,.14);border:1px solid rgba(94,230,168,.55);color:#C4F7DE}
+.fb.bad{display:block;background:rgba(255,110,199,.12);border:1px solid rgba(255,110,199,.55);color:#FFD3EA}
+.pemb{display:none;margin-top:13px;background:rgba(167,139,250,.12);border:1px solid rgba(167,139,250,.5);border-radius:14px;padding:14px 16px;line-height:1.65}
+.pemb.show{display:block;animation:fadeSlide .35s ease}
+.pemb .pt{font-weight:900;color:#D7C8FF;margin-bottom:5px}
+.q-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:18px;flex-wrap:wrap}
+.summary{text-align:center;padding:34px 20px;display:none}
+.summary.show{display:block;animation:fadeSlide .45s ease}
+.stars-big{font-size:2.6rem;letter-spacing:8px;margin:10px 0 6px;filter:drop-shadow(0 4px 14px rgba(255,209,102,.45))}
+.summary h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.6rem;margin-bottom:6px}
+.summary p{color:var(--muted);font-weight:700;margin-bottom:16px}
+/* Menu overlay */
+.overlay{position:fixed;inset:0;z-index:80;background:rgba(4,7,26,.72);backdrop-filter:blur(6px);
+  display:none;align-items:flex-start;justify-content:center;padding:76px 18px 40px;overflow-y:auto}
+.overlay.show{display:flex}
+.panel{width:min(680px,100%);background:rgba(16,23,66,.97);border:1px solid var(--line);border-radius:24px;padding:24px;animation:fadeSlide .3s ease}
+.panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.panel h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.3rem}
+.close-x{cursor:pointer;background:var(--card2);border:1px solid var(--line);color:var(--ink);border-radius:10px;width:36px;height:36px;font-size:1rem;font-weight:900;font-family:inherit}
+.mgroup{margin-bottom:14px}
+.mgroup h4{font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);margin-bottom:8px}
+.mlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}
+.mitem{cursor:pointer;text-align:left;font-family:inherit;font-weight:800;font-size:.9rem;color:var(--ink);
+  background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;transition:background .2s,border-color .2s}
+.mitem:hover{background:rgba(167,139,250,.22);border-color:var(--purple)}
+.mitem .mn{color:var(--muted);font-weight:800;font-size:.78rem;display:block;margin-bottom:2px}
+.mitem.here{border-color:var(--yellow);background:rgba(255,209,102,.13)}
+/* Kesimpulan & refleksi */
+.kcard{position:relative;padding-top:24px}
+.kcard .em{position:absolute;top:-18px;left:20px;font-size:1.9rem;background:rgba(16,23,66,.9);
+  border:1px solid var(--line);border-radius:12px;padding:4px 9px}
+.kcard h4{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.08rem;margin:6px 0 6px;color:#D7E3FF}
+.kcard p{font-size:.93rem;line-height:1.6;color:var(--muted)}
+.moods{display:flex;gap:14px;justify-content:center;margin:14px 0}
+.mood{font-size:2.2rem;cursor:pointer;background:var(--card);border:2px solid var(--line);border-radius:18px;
+  padding:10px 16px;transition:transform .2s,border-color .2s;font-family:inherit}
+.mood:hover{transform:scale(1.08)}
+.mood.sel{border-color:var(--yellow);background:rgba(255,209,102,.15)}
+.check{display:flex;gap:11px;align-items:flex-start;padding:10px 4px;font-weight:700;line-height:1.5;cursor:pointer}
+.check input{width:20px;height:20px;accent-color:var(--green);margin-top:2px;flex:0 0 auto}
+textarea.ref{width:100%;min-height:92px;border-radius:14px;border:2px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.08);color:#fff;padding:12px 14px;font-family:inherit;font-size:1rem;font-weight:600;resize:vertical}
+textarea.ref:focus{outline:none;border-color:var(--purple)}
+.refmsg{display:none;margin-top:10px;font-weight:800;color:#C4F7DE}
+.refmsg.show{display:block;animation:fadeSlide .35s ease}
+/* Navbar bawah */
+.navbar{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:60;display:flex;gap:10px;align-items:center;
+  background:rgba(13,20,64,.9);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:999px;
+  padding:8px 12px;box-shadow:0 12px 34px rgba(0,0,0,.5);max-width:calc(100vw - 24px)}
+.nav-btn{cursor:pointer;font-family:inherit;font-weight:900;font-size:.92rem;border:none;border-radius:999px;padding:11px 20px;
+  background:var(--card2);color:var(--ink);transition:background .2s,transform .2s;white-space:nowrap}
+.nav-btn.primary{background:linear-gradient(90deg,var(--cyan),#7CE7FF);color:#081033}
+.nav-btn:hover:not(:disabled){transform:translateY(-2px)}
+.nav-btn:disabled{opacity:.35;cursor:not-allowed}
+.here-name{font-size:.82rem;font-weight:800;color:var(--muted);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media (max-width:560px){.here-name{display:none}.nav-btn{padding:10px 15px;font-size:.85rem}}
+/* Util */
+.mt1{margin-top:10px}.mt2{margin-top:16px}.mt3{margin-top:24px}.mb1{margin-bottom:10px}
+.flex{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.small{font-size:.88rem;color:var(--muted);font-weight:700}
+</style>
+</head>
+<body>
+<div id="stars" aria-hidden="true"></div>
+<div class="deco d1" aria-hidden="true">🪐</div>
+<div class="deco d2" aria-hidden="true">🚀</div>
+<div class="deco d3" aria-hidden="true">👽</div>
+<div class="deco d4" aria-hidden="true">🛸</div>
+<div class="deco d5" aria-hidden="true">🌍</div>
+
+<header class="topbar">
+  <div class="brand"><span class="mini">🚀</span><span class="txt">Misi Persen · Kelas 4</span></div>
+  <div class="progress" aria-hidden="true"><i id="pbar"></i></div>
+  <div class="counter" id="counter">1 / 18</div>
+  <button class="menu-btn" id="btnMenu" aria-label="Buka menu daftar isi">☰ Daftar Isi</button>
+</header>
+
+<main class="deck" id="deck">
+<!-- ============ SLIDE 1: COVER ============ -->
+<section class="slide" data-title="Cover" data-group="Pembuka">
+  <div class="wrap center">
+    <div style="font-size:4.6rem;line-height:1">🚀</div>
+    <div class="eyebrow" style="margin-top:14px">Matematika · Kelas 4 SD</div>
+    <h1 class="big">Penggunaan <span class="grad">Persen</span><br>dalam Kehidupan Sehari-hari</h1>
+    <p class="lead" style="max-width:620px">Bersiaplah, astronot hebat! Hari ini kita menjelajahi planet
+      <b style="color:var(--yellow)">Persen&nbsp;(%)</b> — dari diskon toko mainan sampai baterai HP papa. Ayo mulai misinya!</p>
+    <div class="flex mt3" style="justify-content:center">
+      <button class="btn" onclick="go(1)">Mulai Misi →</button>
+      <button class="btn ghost" onclick="openMenu()">☰ Lihat Peta Misi</button>
+    </div>
+    <div class="flex mt2" style="justify-content:center;gap:8px">
+      <span class="chip">🪐 6 Materi</span><span class="chip">✏️ 60 Latihan Soal</span><span class="chip">⭐ Kuis Interaktif</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 2: APERSEPSI ============ -->
+<section class="slide" data-title="Apersepsi" data-group="Pembuka">
+  <div class="wrap">
+    <div class="eyebrow yellow">Misi Pemanasan · Apersepsi</div>
+    <h2 class="title">Kamu pasti pernah melihat tanda ini! 👀</h2>
+    <p class="lead mb1">Klik setiap kartu untuk membaliknya dan menemukan artinya!</p>
+    <div class="mt1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:14px">
+      <div class="flip" tabindex="0" role="button" aria-label="Kartu diskon">
+        <div class="flip-inner">
+          <div class="face front"><div class="em">🛍️</div><div class="w">"DISKON 50%!"</div><small>Papan di etalase toko mainan</small></div>
+          <div class="face back"><div class="em">🎉</div>Harga mainan <b>dipotong setengahnya</b>! Kalau harganya Rp40.000, cukup bayar Rp20.000.</div>
+        </div>
+      </div>
+      <div class="flip" tabindex="0" role="button" aria-label="Kartu baterai">
+        <div class="flip-inner">
+          <div class="face front"><div class="em">🔋</div><div class="w">Baterai 20%</div><small>Di pojok layar HP papa</small></div>
+          <div class="face back"><div class="em">😱</div>Baterai tinggal <b>20 dari 100 bagian</b>. Segera isi ulang sebelum habis!</div>
+        </div>
+      </div>
+      <div class="flip" tabindex="0" role="button" aria-label="Kartu skor game">
+        <div class="flip-inner">
+          <div class="face front"><div class="em">🎮</div><div class="w">Skor naik 100%</div><small>Di layar permainan</small></div>
+          <div class="face back"><div class="em">🔥</div>Skormu menjadi <b>dua kali lipat</b> dari sebelumnya. Hebat!</div>
+        </div>
+      </div>
+      <div class="flip" tabindex="0" role="button" aria-label="Kartu nilai ulangan">
+        <div class="flip-inner">
+          <div class="face front"><div class="em">📝</div><div class="w">Nilai 90 dari 100</div><small>Di lembar ulanganmu</small></div>
+          <div class="face back"><div class="em">⭐</div>90 dari 100 sama dengan <b>90%</b>. Kamu menjawab 90 dari 100 bagian dengan benar!</div>
+        </div>
+      </div>
+    </div>
+    <div class="tip mt2">🤔 <b>Pertanyaan pemantik:</b> Semua kartu di atas memakai tanda <b>%</b>.
+      Menurutmu apa arti tanda itu? Dari mana angka 50, 20, dan 100 berasal? Ayo kita cari tahu bersama di misi berikutnya! 🚀</div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 3: MATERI 1A ============ -->
+<section class="slide" data-title="Materi 1 · Apa itu Persen?" data-group="Materi">
+  <div class="wrap">
+    <div class="eyebrow">Misi 1 · Mengingat Kembali</div>
+    <h2 class="title">Apa itu Persen? <span class="grad">Pecahan → Persen</span></h2>
+    <div class="grid2">
+      <div class="card solid">
+        <span class="tag">Konsep dasar</span>
+        <h4 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.15rem;margin-bottom:8px">Persen berarti "per seratus"</h4>
+        <p class="body">Kata <i>persen</i> berasal dari arti <b>per seratus</b>. Jadi <b>25%</b> artinya
+          <b>25 dari 100 bagian</b>. Simbolnya ditulis <b>%</b> dan dibaca <i>persen</i>.</p>
+        <div class="formula">25% = 25 dari 100 bagian</div>
+        <p class="small mt1">Bayangkan cokelat batang 🍫 dibagi 100 kotak kecil. Jika kamu makan 25 kotak, kamu sudah makan 25% cokelatnya!</p>
+      </div>
+      <div class="card solid" style="text-align:center">
+        <span class="tag">Visual 25%</span>
+        <div class="grid100" data-on="25" aria-hidden="true"></div>
+        <p class="small">25 kotak berwarna dari 100 kotak = <b style="color:var(--yellow)">25%</b></p>
+      </div>
+    </div>
+    <div class="grid2 mt2">
+      <div class="card">
+        <span class="tag">Cara 1 · Samakan penyebut menjadi 100</span>
+        <div class="q-text" style="font-size:1.05rem">1/2 sama dengan berapa persen?</div>
+        <ol class="steps">
+          <li><span class="n">1</span><span>Ubah penyebut 2 menjadi 100 dengan mengalikan 50.<br><b>1/2 = (1 × 50) / (2 × 50) = 50/100</b></span></li>
+          <li><span class="n">2</span><span>50/100 berarti 50 per seratus → tulis dengan simbol %.<br><b>1/2 = 50%</b> ✅</span></li>
+        </ol>
+      </div>
+      <div class="card">
+        <span class="tag">Cara 2 · Kalikan dengan 100%</span>
+        <div class="q-text" style="font-size:1.05rem">3/4 sama dengan berapa persen?</div>
+        <ol class="steps">
+          <li><span class="n">1</span><span>Kalikan pecahan dengan 100%.<br><b>3/4 × 100% = 300/4 %</b></span></li>
+          <li><span class="n">2</span><span>Bagi 300 dengan 4.<br><b>300 : 4 = 75</b>, jadi <b>3/4 = 75%</b> ✅</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="tip mt2">💡 <b>Ingat:</b> angka 100 adalah kunci semua persen. Pecahan apa pun yang penyebutnya bisa diubah menjadi 100 akan mudah diubah menjadi persen!</div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 4: MATERI 1B ============ -->
+<section class="slide" data-title="Materi 1 · Konversi Dua Arah" data-group="Materi">
+  <div class="wrap">
+    <div class="eyebrow">Misi 1 · Mengingat Kembali</div>
+    <h2 class="title">Bolak-balik: <span class="grad">Desimal ⇆ Persen ⇆ Pecahan</span></h2>
+    <div class="grid2">
+      <div class="card">
+        <span class="tag">Desimal → Persen</span>
+        <h4 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.08rem">Geser koma 2 tempat ke kanan, tulis %</h4>
+        <p class="body mt1"><b>0,25 → 25% &nbsp;·&nbsp; 0,7 = 0,70 → 70%</b></p>
+        <p class="small">Mengapa? Karena 0,25 artinya 25 per 100, sama saja dengan 25%.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Persen → Desimal</span>
+        <h4 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.08rem">Geser koma 2 tempat ke kiri, hapus %</h4>
+        <p class="body mt1"><b>45% → 0,45 &nbsp;·&nbsp; 8% = 0,08 → 0,08</b></p>
+        <p class="small">8% artinya 8 per 100, jadi desimalnya 0,08.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Persen → Pecahan</span>
+        <h4 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.08rem">Tulis per 100, lalu sederhanakan</h4>
+        <ol class="steps">
+          <li><span class="n">1</span><span><b>25% = 25/100</b></span></li>
+          <li><span class="n">2</span><span>Sederhanakan: 25 dan 100 sama-sama dibagi 25 → <b>1/4</b> ✅</span></li>
+        </ol>
+      </div>
+      <div class="card">
+        <span class="tag">Pecahan → Desimal (lewat persen)</span>
+        <h4 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.08rem">Pecahan → persen → desimal</h4>
+        <p class="body mt1"><b>1/5 = 20/100 = 20% → 0,20 = 0,2</b></p>
+        <p class="small">Ubah dulu ke per seratus, baru geser komanya.</p>
+      </div>
+    </div>
+    <div class="card mt2">
+      <span class="tag">Tabel sahabat — hafalkan ini!</span>
+      <table class="tbl">
+        <tr><th>Persen</th><th>Pecahan</th><th>Desimal</th><th>Artinya</th></tr>
+        <tr><td>100%</td><td>1</td><td>1,0</td><td>semuanya 🌕</td></tr>
+        <tr><td>50%</td><td>1/2</td><td>0,5</td><td>setengah 🌗</td></tr>
+        <tr><td>25%</td><td>1/4</td><td>0,25</td><td>seperempat 🌘</td></tr>
+        <tr><td>75%</td><td>3/4</td><td>0,75</td><td>tiga per empat 🌖</td></tr>
+        <tr><td>20%</td><td>1/5</td><td>0,2</td><td>seperlima ⭐</td></tr>
+        <tr><td>10%</td><td>1/10</td><td>0,1</td><td>sepersepuluh ✨</td></tr>
+      </table>
+    </div>
+    <div class="tip mt2">🎯 <b>Sudah siap?</b> Buktikan kamu masih ingat misi lama — kerjakan Latihan 1 sekarang!</div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 5: LATIHAN 1 ============ -->
+<section class="slide" data-title="Latihan 1 · Konversi Persen" data-group="Latihan">
+  <div class="wrap">
+    <div class="eyebrow pink">Latihan 1 · 10 Soal</div>
+    <h2 class="title">Latihan Konversi <span class="grad">Pecahan, Desimal ⇆ Persen</span> ✏️</h2>
+    <div class="quiz" id="quiz-q1" data-quiz="q1"></div>
+  </div>
+</section>
+<!-- ============ SLIDE 6: MATERI 2 ============ -->
+<section class="slide" data-title="Materi 2 · Membentuk Persen" data-group="Materi">
+  <div class="wrap">
+    <div class="eyebrow">Misi 2</div>
+    <h2 class="title">Membentuk Persen dari <span class="grad">Sebuah Permasalahan</span></h2>
+    <div class="card solid">
+      <span class="tag">Rumus rahasia</span>
+      <p class="body">Jika ada <b>bagian</b> dari <b>keseluruhan</b>, persennya adalah:</p>
+      <div class="formula">Persen = bagian / keseluruhan × 100%</div>
+      <p class="small mt1">Tulis dulu sebagai pecahan "bagian per keseluruhan", lalu ubah menjadi per seratus.</p>
+    </div>
+    <div class="grid2 mt2">
+      <div class="card">
+        <span class="tag">Contoh 1 · Rak buku</span>
+        <div class="q-text" style="font-size:1.02rem">📚 Dari 60 buku di rak, 15 buku bergambar. Berapa persen buku yang bergambar?</div>
+        <ol class="steps">
+          <li><span class="n">1</span><span>Tulis pecahannya: bagian per keseluruhan = <b>15/60</b></span></li>
+          <li><span class="n">2</span><span>Sederhanakan: 15 dan 60 dibagi 15 → <b>1/4</b></span></li>
+          <li><span class="n">3</span><span>Samakan penyebut jadi 100: <b>1/4 = 25/100</b></span></li>
+          <li><span class="n">4</span><span>Jadi buku bergambar = <b>25%</b> ✅</span></li>
+        </ol>
+      </div>
+      <div class="card">
+        <span class="tag">Contoh 2 · Kelas kita</span>
+        <div class="q-text" style="font-size:1.02rem">👧 Dari 50 siswa, 30 siswa adalah perempuan. Berapa persen siswa perempuan?</div>
+        <ol class="steps">
+          <li><span class="n">1</span><span>Tulis pecahannya: <b>30/50</b></span></li>
+          <li><span class="n">2</span><span>Samakan penyebut: dikali 2, atas dan bawah → <b>60/100</b></span></li>
+          <li><span class="n">3</span><span>Jadi siswa perempuan = <b>60%</b> ✅</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="tip mt2">💡 <b>Trik cepat:</b> bagilah bagian dengan keseluruhannya, lalu kalikan 100.
+      Atau sederhanakan pecahannya lebih dulu supaya penyebutnya mudah diubah menjadi 100.</div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 7: LATIHAN 2 ============ -->
+<section class="slide" data-title="Latihan 2 · Membentuk Persen" data-group="Latihan">
+  <div class="wrap">
+    <div class="eyebrow pink">Latihan 2 · 10 Soal</div>
+    <h2 class="title">Latihan Membentuk <span class="grad">Persen</span> ✏️</h2>
+    <div class="quiz" id="quiz-q2" data-quiz="q2"></div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 8: MATERI 3 ============ -->
+<section class="slide" data-title="Materi 3 · Banyaknya Benda" data-group="Materi">
+  <div class="wrap">
+    <div class="eyebrow">Misi 3</div>
+    <h2 class="title">Menentukan <span class="grad">Banyaknya Benda</span> Berdasarkan Persentase</h2>
+    <div class="card solid">
+      <span class="tag">Rumus rahasia</span>
+      <p class="body">Kata <b>"dari"</b> dalam matematika berarti <b>kali (×)</b>. Jadi:</p>
+      <div class="formula">Banyak benda = persen/100 × jumlah total</div>
+      <p class="small mt1">Contoh: 25% dari 40 → 25/100 × 40</p>
+    </div>
+    <div class="grid2 mt2">
+      <div class="card">
+        <span class="tag">Contoh 1 · Suka sepak bola</span>
+        <div class="q-text" style="font-size:1.02rem">⚽ 25% dari 40 siswa suka sepak bola. Berapa banyak siswa yang suka sepak bola?</div>
+        <ol class="steps">
+          <li><span class="n">1</span><span>Ubah ke pecahan: <b>25% = 25/100</b></span></li>
+          <li><span class="n">2</span><span>"dari" berarti kali: <b>25/100 × 40 = 1.000/100</b></span></li>
+          <li><span class="n">3</span><span>Jadi ada <b>10 siswa</b> ✅</span></li>
+        </ol>
+      </div>
+      <div class="card">
+        <span class="tag">Contoh 2 · Permen</span>
+        <div class="q-text" style="font-size:1.02rem">🍬 50% dari 20 permen adalah permen stroberi. Berapa banyak permen stroberi?</div>
+        <ol class="steps">
+          <li><span class="n">1</span><span><b>50%</b> artinya setengah!</span></li>
+          <li><span class="n">2</span><span>Setengah dari 20 = <b>20 : 2 = 10</b></span></li>
+          <li><span class="n">3</span><span>Jadi ada <b>10 permen stroberi</b> ✅</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="tip mt2">⚡ <b>Trik jagoan:</b> 50% = bagi 2 · 25% = bagi 4 · 10% = bagi 10 ·
+      75% = tiga per empat bagiannya · 100% = semuanya!</div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 9: LATIHAN 3 ============ -->
+<section class="slide" data-title="Latihan 3 · Banyaknya Benda" data-group="Latihan">
+  <div class="wrap">
+    <div class="eyebrow pink">Latihan 3 · 10 Soal</div>
+    <h2 class="title">Latihan Menentukan <span class="grad">Banyaknya Benda</span> ✏️</h2>
+    <div class="quiz" id="quiz-q3" data-quiz="q3"></div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 10: MATERI 4 ============ -->
+<section class="slide" data-title="Materi 4 · Diskon Barang" data-group="Materi">
+  <div class="wrap">
+    <div class="eyebrow">Misi 4 · Dunia Belanja</div>
+    <h2 class="title">Menentukan <span class="grad">Diskon</span> dari Persentase Diskon 🛒</h2>
+    <div class="card solid">
+      <span class="tag">Rumus rahasia</span>
+      <p class="body"><b>Diskon</b> adalah potongan harga. Semakin besar persen diskon, semakin murah barangnya!</p>
+      <div class="formula">Besar diskon = persen diskon × harga asli<br>Harga bayar = harga asli − besar diskon</div>
+    </div>
+    <div class="grid2 mt2">
+      <div class="card">
+        <span class="tag">Contoh · Beli buku</span>
+        <div class="q-text" style="font-size:1.02rem">📒 Harga buku Rp20.000. Di toko ada diskon 25%. Berapa harga yang harus dibayar?</div>
+        <ol class="steps">
+          <li><span class="n">1</span><span>Hitung diskonnya: <b>25% × 20.000 = 25/100 × 20.000 = 5.000</b></span></li>
+          <li><span class="n">2</span><span>Kurangi harga asli: <b>20.000 − 5.000 = 15.000</b></span></li>
+          <li><span class="n">3</span><span>Harga yang dibayar = <b>Rp15.000</b> ✅</span></li>
+        </ol>
+      </div>
+      <div class="card solid" style="text-align:center">
+        <span class="tag">Tampak label toko</span>
+        <div style="background:rgba(255,255,255,.07);border:2px dashed rgba(255,209,102,.6);border-radius:18px;padding:18px;margin-top:4px">
+          <div style="font-size:2.2rem">🚀🧩</div>
+          <div style="text-decoration:line-through;color:var(--muted);font-weight:800;font-size:1.1rem;margin-top:6px">Rp40.000</div>
+          <div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.7rem;color:var(--green)">Rp20.000</div>
+          <div style="display:inline-block;margin-top:8px;background:var(--pink);color:#3A0A24;font-weight:900;border-radius:999px;padding:4px 14px">DISKON 50%</div>
+        </div>
+        <p class="small mt1">Harga lama dicoret, harga baru lebih murah!</p>
+      </div>
+    </div>
+    <div class="tip mt2">💡 <b>Ingat urutannya:</b> hitung dulu besar diskon (rupiah) → baru harga bayar. Jangan sampai tertukar!</div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 11: LATIHAN 4 ============ -->
+<section class="slide" data-title="Latihan 4 · Diskon Barang" data-group="Latihan">
+  <div class="wrap">
+    <div class="eyebrow pink">Latihan 4 · 10 Soal</div>
+    <h2 class="title">Latihan Menghitung <span class="grad">Diskon</span> ✏️</h2>
+    <div class="quiz" id="quiz-q4" data-quiz="q4"></div>
+  </div>
+</section>
+<!-- ============ SLIDE 12: MATERI 5 ============ -->
+<section class="slide" data-title="Materi 5 · Harga Asli" data-group="Materi">
+  <div class="wrap">
+    <div class="eyebrow">Misi 5 · Detektif Belanja</div>
+    <h2 class="title">Menentukan <span class="grad">Harga Asli</span> dari Diskon 🔍</h2>
+    <div class="card solid">
+      <span class="tag">Cara detektif · cari nilai 1% dulu!</span>
+      <p class="body">Harga yang dibayar <b>telah dipotong diskonnya</b>. Jadi: <b>100% − diskon%</b> adalah bagian yang dibayar.
+        Cari dulu nilai <b>1%</b>, lalu kalikan 100 untuk menemukan harga asli (100%).</p>
+      <div class="formula">Nilai 1% = harga dibayar : (100 − diskon)<br>Harga asli = nilai 1% × 100</div>
+    </div>
+    <div class="grid2 mt2">
+      <div class="card">
+        <span class="tag">Contoh 1 · Tas Rani</span>
+        <div class="q-text" style="font-size:1.02rem">👜 Setelah diskon 20%, Rani membayar Rp80.000 untuk sebuah tas. Berapa harga asli tas?</div>
+        <ol class="steps">
+          <li><span class="n">1</span><span>Bagian yang dibayar: <b>100% − 20% = 80%</b></span></li>
+          <li><span class="n">2</span><span>80% dari harga asli = Rp80.000.<br>Nilai 1% = <b>80.000 : 80 = 1.000</b></span></li>
+          <li><span class="n">3</span><span>Harga asli (100%) = <b>1.000 × 100 = Rp100.000</b> ✅</span></li>
+        </ol>
+      </div>
+      <div class="card">
+        <span class="tag">Contoh 2 · Tahu besar diskonnya</span>
+        <div class="q-text" style="font-size:1.02rem">🎁 Diskon sebuah mainan 25%, besar diskonnya Rp5.000. Berapa harga asli mainan?</div>
+        <ol class="steps">
+          <li><span class="n">1</span><span>25% dari harga asli = Rp5.000</span></li>
+          <li><span class="n">2</span><span>Nilai 1% = <b>5.000 : 25 = 200</b></span></li>
+          <li><span class="n">3</span><span>Harga asli = <b>200 × 100 = Rp20.000</b> ✅</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="tip mt2">🧠 <b>Periksa kembali:</b> jika harga asli Rp100.000 dan diskon 20%, diskonnya Rp20.000,
+      sehingga harga bayar Rp80.000. Cocok dengan ceritanya! Detektif sejati selalu memeriksa. 🕵️</div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 13: LATIHAN 5 ============ -->
+<section class="slide" data-title="Latihan 5 · Harga Asli" data-group="Latihan">
+  <div class="wrap">
+    <div class="eyebrow pink">Latihan 5 · 10 Soal</div>
+    <h2 class="title">Latihan Menentukan <span class="grad">Harga Asli</span> ✏️</h2>
+    <div class="quiz" id="quiz-q5" data-quiz="q5"></div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 14: MATERI 6 ============ -->
+<section class="slide" data-title="Materi 6 · Besar Diskon" data-group="Materi">
+  <div class="wrap">
+    <div class="eyebrow">Misi 6 · Penyidik Diskon</div>
+    <h2 class="title">Menentukan <span class="grad">Besar Diskon</span> dari Harga Dibayar &amp; Harga Asli 💰</h2>
+    <div class="card solid">
+      <span class="tag">Rumus rahasia</span>
+      <p class="body">Jika kamu tahu harga asli dan harga yang dibayar, potongannya bisa dihitung mundur!</p>
+      <div class="formula">Besar diskon (Rp) = harga asli − harga dibayar<br>Persen diskon = besar diskon / harga asli × 100%</div>
+    </div>
+    <div class="grid2 mt2">
+      <div class="card">
+        <span class="tag">Contoh 1 · Sepatu Dina</span>
+        <div class="q-text" style="font-size:1.02rem">👟 Harga asli sepatu Rp50.000. Dina membayar Rp40.000. Berapa persen diskonnya?</div>
+        <ol class="steps">
+          <li><span class="n">1</span><span>Besar diskon: <b>50.000 − 40.000 = Rp10.000</b></span></li>
+          <li><span class="n">2</span><span>Tulis pecahan: <b>10.000/50.000 = 1/5</b></span></li>
+          <li><span class="n">3</span><span>Ubah ke per seratus: <b>1/5 = 20/100</b> → diskon <b>20%</b> ✅</span></li>
+        </ol>
+      </div>
+      <div class="card">
+        <span class="tag">Contoh 2 · Buku gambar</span>
+        <div class="q-text" style="font-size:1.02rem">🖍️ Harga asli buku gambar Rp20.000. Bay hanya membayar Rp15.000. Berapa besar diskon dalam rupiah?</div>
+        <ol class="steps">
+          <li><span class="n">1</span><span>Besar diskon: <b>20.000 − 15.000 = Rp5.000</b> ✅</span></li>
+          <li><span class="n">2</span><span>Bonus: persennya = 5.000/20.000 = 1/4 = <b>25%</b></span></li>
+          <li><span class="n">3</span><span>Jadi Bay berhemat <b>Rp5.000</b>! 💪</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="tip mt2">💡 <b>Hubungan ketiganya:</b> harga asli − diskon = harga bayar.
+      Kalau dua angka diketahui, angka ketiga selalu bisa ditemukan!</div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 15: LATIHAN 6 ============ -->
+<section class="slide" data-title="Latihan 6 · Besar Diskon" data-group="Latihan">
+  <div class="wrap">
+    <div class="eyebrow pink">Latihan 6 · 10 Soal</div>
+    <h2 class="title">Latihan Menentukan <span class="grad">Besar Diskon</span> ✏️</h2>
+    <div class="quiz" id="quiz-q6" data-quiz="q6"></div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 16: KESIMPULAN ============ -->
+<section class="slide" data-title="Kesimpulan" data-group="Penutup">
+  <div class="wrap">
+    <div class="eyebrow">Misi Selesai · Kesimpulan</div>
+    <h2 class="title">Kunci Misi Hari Ini 🔑</h2>
+    <div class="grid3 mt1">
+      <div class="card kcard"><span class="em">%</span>
+        <h4>Persen = per seratus</h4>
+        <p>25% artinya 25 dari 100. Pecahan &amp; desimal bisa diubah ke persen, begitu pula sebaliknya. 1/2 = 50%, 0,25 = 25%.</p>
+      </div>
+      <div class="card kcard"><span class="em">🧮</span>
+        <h4>Membentuk persen</h4>
+        <p>Persen = bagian/keseluruhan × 100%. Tulis pecahan "bagian per keseluruhan", lalu ubah menjadi per seratus.</p>
+      </div>
+      <div class="card kcard"><span class="em">🍬</span>
+        <h4>Banyaknya benda</h4>
+        <p>"dari" berarti kali. Banyak benda = persen/100 × total. 50% = setengah, 25% = seperempat.</p>
+      </div>
+      <div class="card kcard"><span class="em">🛒</span>
+        <h4>Diskon barang</h4>
+        <p>Besar diskon = persen × harga asli. Harga bayar = harga asli − besar diskon.</p>
+      </div>
+      <div class="card kcard"><span class="em">🔍</span>
+        <h4>Harga asli</h4>
+        <p>Harga bayar = (100% − diskon%) × harga asli. Cari nilai 1% dulu, lalu kalikan 100.</p>
+      </div>
+      <div class="card kcard"><span class="em">💰</span>
+        <h4>Besar diskon</h4>
+        <p>Besar diskon = harga asli − harga bayar. Persen diskon = diskon/harga asli × 100%.</p>
+      </div>
+    </div>
+    <div class="tip mt3">🌟 <b>Persen ada di mana-mana:</b> diskon toko, baterai HP, skor game, hasil ulangan, bahkan di kemasan susu.
+      Sekarang kamu bisa membaca semuanya seperti ahli!</div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 17: REFLEKSI ============ -->
+<section class="slide" data-title="Refleksi" data-group="Penutup">
+  <div class="wrap">
+    <div class="eyebrow yellow">Refleksi</div>
+    <h2 class="title">Bagaimana Perasaanmu Hari Ini? 💭</h2>
+    <div class="grid2">
+      <div class="card solid">
+        <span class="tag">Pilih satu</span>
+        <div class="moods">
+          <button class="mood" data-msg="Wah, kamu berani tantangan baru! Besok kita bisa latihan lagi bersama. 💪" aria-label="Bingung">🤔</button>
+          <button class="mood" data-msg="Bagus! Terus semangat, pelan-pelan pasti bisa. 🌱" aria-label="Cukup">🙂</button>
+          <button class="mood" data-msg="Luar biasa! Kamu siap jadi mentor bagi teman-temanmu! 🏆" aria-label="Senang">😄</button>
+        </div>
+        <p class="refmsg" id="moodMsg"></p>
+      </div>
+      <div class="card solid">
+        <span class="tag">Centang yang bisa kamu lakukan</span>
+        <label class="check"><input type="checkbox"> Saya bisa mengubah pecahan &amp; desimal menjadi persen</label>
+        <label class="check"><input type="checkbox"> Saya bisa membentuk persen dari sebuah permasalahan</label>
+        <label class="check"><input type="checkbox"> Saya bisa menghitung banyaknya benda dari persentase</label>
+        <label class="check"><input type="checkbox"> Saya bisa menghitung diskon, harga asli, dan besar diskon</label>
+      </div>
+    </div>
+    <div class="card solid mt2">
+      <span class="tag">Ceritakan satu hal baru yang kamu pelajari</span>
+      <textarea class="ref mt1" id="refText" placeholder="Contoh: Aku baru tahu kalau 50% artinya setengah..."></textarea>
+      <div class="flex mt1">
+        <button class="btn purple" id="refSave">Simpan Refleksiku</button>
+        <p class="refmsg" id="refMsg">Terima kasih sudah berpikir keras, astronot hebat! ⭐</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 18: THANK YOU ============ -->
+<section class="slide" data-title="Thank You" data-group="Penutup">
+  <div class="wrap center">
+    <div style="font-size:4.4rem;line-height:1">🌟🚀</div>
+    <h1 class="big" style="margin-top:12px">Thank You <span class="grad">for Today!</span></h1>
+    <p class="lead" style="max-width:600px">Kamu berhasil menyelesaikan Misi Persen! Sampai jumpa di petualangan
+      matematika berikutnya, astronot hebat kelas 4! 👨‍🚀👩‍🚀</p>
+    <div class="flex mt3" style="justify-content:center">
+      <button class="btn ghost" onclick="go(0)">⟲ Kembali ke Cover</button>
+      <button class="btn" onclick="openMenu()">☰ Peta Misi</button>
+    </div>
+    <p class="small mt3">Matematika · Penggunaan Persen dalam Kehidupan Sehari-hari · Kelas 4 SD</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ NAVBAR BAWAH ============ -->
+<nav class="navbar" aria-label="Navigasi slide">
+  <button class="nav-btn" id="btnPrev">◀ Sebelumnya</button>
+  <span class="here-name" id="hereName">Cover</span>
+  <button class="nav-btn primary" id="btnNext">Berikutnya ▶</button>
+</nav>
+
+<!-- ============ MENU DAFTAR ISI ============ -->
+<div class="overlay" id="menuOverlay" role="dialog" aria-label="Daftar isi">
+  <div class="panel">
+    <div class="panel-head">
+      <h3>🪐 Peta Misi — Daftar Isi</h3>
+      <button class="close-x" id="btnCloseMenu" aria-label="Tutup menu">✕</button>
+    </div>
+    <div id="menuBody"></div>
+  </div>
+</div>
+<script>
+/* ================================================================
+   DATA LATIHAN SOAL — 6 materi × 10 soal = 60 soal + pembahasan
+   a: daftar jawaban yang diterima (akan dinormalisasi otomatis)
+   ph: placeholder kotak jawaban
+================================================================ */
+const QUIZZES = {
+  q1: {
+    judul: "Latihan 1 — Konversi Pecahan, Desimal ⇆ Persen",
+    soal: [
+      { q:"1/2 sama dengan ... %.", a:["50"], ph:"contoh: 50",
+        p:"Ubah penyebut 2 menjadi 100 dengan mengalikan 50: 1/2 = 50/100. Jadi 1/2 = <b>50%</b>." },
+      { q:"3/4 sama dengan ... %.", a:["75"], ph:"contoh: 75",
+        p:"3/4 = 75/100 (kalikan atas dan bawah dengan 25). Jadi 3/4 = <b>75%</b>. Ingat tabel sahabat!" },
+      { q:"1/5 sama dengan ... %.", a:["20"], ph:"contoh: 20",
+        p:"1/5 = 20/100 (kalikan atas dan bawah dengan 20). Jadi 1/5 = <b>20%</b>." },
+      { q:"0,75 sama dengan ... %.", a:["75"], ph:"contoh: 75",
+        p:"Desimal ke persen: geser koma 2 tempat ke kanan. 0,75 → <b>75%</b>." },
+      { q:"0,4 sama dengan ... %.", a:["40"], ph:"contoh: 40",
+        p:"0,4 = 0,40. Geser koma 2 tempat ke kanan → <b>40%</b>." },
+      { q:"0,85 sama dengan ... %.", a:["85"], ph:"contoh: 85",
+        p:"Geser koma 2 tempat ke kanan: 0,85 → <b>85%</b>." },
+      { q:"25% jika ditulis sebagai pecahan paling sederhana menjadi ...", a:["1/4","25/100"], ph:"contoh: 1/4",
+        p:"25% = 25/100. Sederhanakan: 25 dan 100 sama-sama dibagi 25 → <b>1/4</b>." },
+      { q:"70% jika ditulis sebagai pecahan paling sederhana menjadi ...", a:["7/10","70/100"], ph:"contoh: 7/10",
+        p:"70% = 70/100. Sederhanakan dengan membagi 10 → <b>7/10</b>." },
+      { q:"40% jika ditulis sebagai desimal menjadi ...", a:["0,4","0.4","0,40","0.40"], ph:"contoh: 0,4",
+        p:"Persen ke desimal: geser koma 2 tempat ke kiri. 40% → 0,40 = <b>0,4</b>." },
+      { q:"85% jika ditulis sebagai desimal menjadi ...", a:["0,85","0.85"], ph:"contoh: 0,85",
+        p:"Geser koma 2 tempat ke kiri: 85% → <b>0,85</b>." }
+    ]
+  },
+  q2: {
+    judul: "Latihan 2 — Membentuk Persen dari Permasalahan",
+    soal: [
+      { q:"Dari 50 siswa kelas 4, 10 siswa masuk paduan suara. Berapa persen siswa yang masuk paduan suara?", a:["20"], ph:"contoh: 20",
+        p:"Bagian per keseluruhan = 10/50. Kalikan 2 atas-bawahnya: 20/100 → <b>20%</b>." },
+      { q:"Dari 40 siswa, 16 siswa perempuan. Berapa persen siswa perempuan?", a:["40"], ph:"contoh: 40",
+        p:"16/40. Bagi 4 atas-bawahnya menjadi 4/10, lalu samakan penyebut: 40/100 → <b>40%</b>." },
+      { q:"Rara punya 48 stiker, 12 di antaranya stiker hewan. Berapa persen stiker hewan?", a:["25"], ph:"contoh: 25",
+        p:"12/48. Bagi 12 atas-bawahnya menjadi 1/4 = 25/100 → <b>25%</b>." },
+      { q:"Ayu membaca 45 halaman dari buku setebal 60 halaman. Berapa persen buku yang sudah dibaca?", a:["75"], ph:"contoh: 75",
+        p:"45/60. Bagi 15 atas-bawahnya menjadi 3/4 = 75/100 → <b>75%</b>." },
+      { q:"Dari 30 balon, 3 balon berwarna emas. Berapa persen balon emas?", a:["10"], ph:"contoh: 10",
+        p:"3/30 = 1/10 = 10/100 → <b>10%</b>." },
+      { q:"Dari 50 anak, 25 anak suka es krim cokelat. Berapa persen anak yang suka es krim cokelat?", a:["50"], ph:"contoh: 50",
+        p:"25/50 = 1/2 = 50/100 → <b>50%</b>, artinya setengah dari seluruh anak." },
+      { q:"Sebuah kue dipotong menjadi 20 bagian. 15 bagian sudah dimakan. Berapa persen kue yang sudah dimakan?", a:["75"], ph:"contoh: 75",
+        p:"15/20. Bagi 5 atas-bawahnya menjadi 3/4 = 75/100 → <b>75%</b>." },
+      { q:"Dari 10 siswa, 2 siswa bersepeda ke sekolah. Berapa persen siswa yang bersepeda?", a:["20"], ph:"contoh: 20",
+        p:"2/10 = 20/100 → <b>20%</b>." },
+      { q:"Bima menjawab benar 18 dari 20 soal. Berapa persen jawaban Bima yang benar?", a:["90"], ph:"contoh: 90",
+        p:"18/20. Bagi 2 atas-bawahnya menjadi 9/10 = 90/100 → <b>90%</b>. Hebat!" },
+      { q:"Dari 20 siswa, 6 siswa ikut ekskul melukis. Berapa persen siswa yang ikut ekskul melukis?", a:["30"], ph:"contoh: 30",
+        p:"6/20. Bagi 2 atas-bawahnya menjadi 3/10 = 30/100 → <b>30%</b>." }
+    ]
+  },
+  q3: {
+    judul: "Latihan 3 — Menentukan Banyaknya Benda dari Persentase",
+    soal: [
+      { q:"25% dari 40 siswa suka bola basket. Berapa banyak siswa yang suka bola basket?", a:["10"], ph:"contoh: 10",
+        p:"25% = 25/100. 25/100 × 40 = 1.000/100 = <b>10 siswa</b>. (25% = seperempat, jadi 40 : 4 = 10.)" },
+      { q:"50% dari 20 permen adalah permen stroberi. Berapa banyak permen stroberi?", a:["10"], ph:"contoh: 10",
+        p:"50% artinya setengah: 20 : 2 = <b>10 permen</b>. Atau 50/100 × 20 = 10." },
+      { q:"10% dari 30 buku tulis. Berapa banyak buku tulis?", a:["3"], ph:"contoh: 3",
+        p:"10/100 × 30 = 300/100 = <b>3 buku</b>. (10% = bagi 10, jadi 30 : 10 = 3.)" },
+      { q:"75% dari 12 kue sudah dimakan. Berapa banyak kue yang sudah dimakan?", a:["9"], ph:"contoh: 9",
+        p:"75/100 × 12 = 900/100 = <b>9 kue</b>. (75% = tiga per empat bagiannya.)" },
+      { q:"20% dari 45 pensil dipinjam kakak. Berapa banyak pensil yang dipinjam?", a:["9"], ph:"contoh: 9",
+        p:"20/100 × 45 = 900/100 = <b>9 pensil</b>." },
+      { q:"50% dari 36 bola adalah bola voli. Berapa banyak bola voli?", a:["18"], ph:"contoh: 18",
+        p:"50% artinya setengah: 36 : 2 = <b>18 bola</b>." },
+      { q:"25% dari 80 kancing berwarna biru. Berapa banyak kancing biru?", a:["20"], ph:"contoh: 20",
+        p:"25/100 × 80 = 2.000/100 = <b>20 kancing</b>. (25% = seperempat, jadi 80 : 4 = 20.)" },
+      { q:"100% dari 15 mainan. Berapa banyak mainan?", a:["15"], ph:"contoh: 15",
+        p:"100% artinya <b>semuanya</b>, jadi tetap <b>15 mainan</b>." },
+      { q:"20% dari 30 donat adalah donat cokelat. Berapa banyak donat cokelat?", a:["6"], ph:"contoh: 6",
+        p:"20/100 × 30 = 600/100 = <b>6 donat</b>." },
+      { q:"75% dari 40 murid ikut lomba lari. Berapa banyak murid yang ikut lomba?", a:["30"], ph:"contoh: 30",
+        p:"75/100 × 40 = 3.000/100 = <b>30 murid</b>." }
+    ]
+  },
+  q4: {
+    judul: "Latihan 4 — Menentukan Diskon dari Persentase Diskon",
+    soal: [
+      { q:"Harga buku Rp20.000 dengan diskon 50%. Berapa rupiah harga yang harus dibayar?", a:["10000"], ph:"contoh: 10000",
+        p:"Diskon = 50% × 20.000 = 10.000. Harga bayar = 20.000 − 10.000 = <b>Rp10.000</b>." },
+      { q:"Harga sepatu Rp100.000 dengan diskon 20%. Berapa rupiah besar diskonnya?", a:["20000"], ph:"contoh: 20000",
+        p:"Diskon = 20/100 × 100.000 = <b>Rp20.000</b>." },
+      { q:"Harga tas Rp40.000 dengan diskon 25%. Berapa rupiah harga yang harus dibayar?", a:["30000"], ph:"contoh: 30000",
+        p:"Diskon = 25/100 × 40.000 = 10.000. Harga bayar = 40.000 − 10.000 = <b>Rp30.000</b>." },
+      { q:"Harga pensil Rp2.000 dengan diskon 50%. Berapa rupiah harga yang harus dibayar?", a:["1000"], ph:"contoh: 1000",
+        p:"Diskon = 50% × 2.000 = 1.000. Harga bayar = 2.000 − 1.000 = <b>Rp1.000</b>." },
+      { q:"Harga mainan Rp60.000 dengan diskon 10%. Berapa rupiah besar diskonnya?", a:["6000"], ph:"contoh: 6000",
+        p:"Diskon = 10/100 × 60.000 = <b>Rp6.000</b>. (10% = bagi 10: 60.000 : 10 = 6.000.)" },
+      { q:"Harga baju Rp80.000 dengan diskon 25%. Berapa rupiah harga yang harus dibayar?", a:["60000"], ph:"contoh: 60000",
+        p:"Diskon = 25/100 × 80.000 = 20.000. Harga bayar = 80.000 − 20.000 = <b>Rp60.000</b>." },
+      { q:"Harga buku tulis Rp5.000 dengan diskon 20%. Berapa rupiah besar diskonnya?", a:["1000"], ph:"contoh: 1000",
+        p:"Diskon = 20/100 × 5.000 = <b>Rp1.000</b>." },
+      { q:"Harga sepeda Rp200.000 dengan diskon 50%. Berapa rupiah harga yang harus dibayar?", a:["100000"], ph:"contoh: 100000",
+        p:"Diskon = 50% × 200.000 = 100.000. Harga bayar = 200.000 − 100.000 = <b>Rp100.000</b>." },
+      { q:"Harga crayon Rp15.000 dengan diskon 20%. Berapa rupiah harga yang harus dibayar?", a:["12000"], ph:"contoh: 12000",
+        p:"Diskon = 20/100 × 15.000 = 3.000. Harga bayar = 15.000 − 3.000 = <b>Rp12.000</b>." },
+      { q:"Harga botol minum Rp25.000 dengan diskon 40%. Berapa rupiah besar diskonnya?", a:["10000"], ph:"contoh: 10000",
+        p:"Diskon = 40/100 × 25.000 = <b>Rp10.000</b>. Harganya jadi tinggal Rp15.000!" }
+    ]
+  },
+  q5: {
+    judul: "Latihan 5 — Menentukan Harga Asli dari Diskon",
+    soal: [
+      { q:"Setelah diskon 50%, Dodi membayar Rp10.000 untuk sebuah komik. Berapa rupiah harga asli komik?", a:["20000"], ph:"contoh: 20000",
+        p:"Yang dibayar 50% dari harga asli = Rp10.000. Artinya harga asli dua kali lipatnya: 10.000 × 2 = <b>Rp20.000</b>." },
+      { q:"Setelah diskon 25%, harga bayar sebuah tas Rp30.000. Berapa rupiah harga aslinya?", a:["40000"], ph:"contoh: 40000",
+        p:"Yang dibayar 100% − 25% = 75%. Nilai 1% = 30.000 : 75 = 400. Harga asli = 400 × 100 = <b>Rp40.000</b>." },
+      { q:"Setelah diskon 20%, harga bayar sepatu Rp80.000. Berapa rupiah harga aslinya?", a:["100000"], ph:"contoh: 100000",
+        p:"Yang dibayar 80%. Nilai 1% = 80.000 : 80 = 1.000. Harga asli = 1.000 × 100 = <b>Rp100.000</b>." },
+      { q:"Setelah diskon 75%, harga bayar sebuah topi Rp5.000. Berapa rupiah harga aslinya?", a:["20000"], ph:"contoh: 20000",
+        p:"Yang dibayar 100% − 75% = 25%. Nilai 1% = 5.000 : 25 = 200. Harga asli = 200 × 100 = <b>Rp20.000</b>." },
+      { q:"Setelah diskon 10%, harga bayar jas hujan Rp90.000. Berapa rupiah harga aslinya?", a:["100000"], ph:"contoh: 100000",
+        p:"Yang dibayar 90%. Nilai 1% = 90.000 : 90 = 1.000. Harga asli = 1.000 × 100 = <b>Rp100.000</b>." },
+      { q:"Setelah diskon 50%, harga bayar mainan Rp25.000. Berapa rupiah harga aslinya?", a:["50000"], ph:"contoh: 50000",
+        p:"Yang dibayar setengah harganya. Harga asli = 25.000 × 2 = <b>Rp50.000</b>." },
+      { q:"Setelah diskon 20%, harga bayar sebuah buku paket Rp40.000. Berapa rupiah harga aslinya?", a:["50000"], ph:"contoh: 50000",
+        p:"Yang dibayar 80%. Nilai 1% = 40.000 : 80 = 500. Harga asli = 500 × 100 = <b>Rp50.000</b>." },
+      { q:"Setelah diskon 25%, harga bayar kotak pensil Rp15.000. Berapa rupiah harga aslinya?", a:["20000"], ph:"contoh: 20000",
+        p:"Yang dibayar 75%. Nilai 1% = 15.000 : 75 = 200. Harga asli = 200 × 100 = <b>Rp20.000</b>." },
+      { q:"Setelah diskon 50%, harga bayar rak buku Rp45.000. Berapa rupiah harga aslinya?", a:["90000"], ph:"contoh: 90000",
+        p:"Yang dibayar setengah harganya. Harga asli = 45.000 × 2 = <b>Rp90.000</b>." },
+      { q:"Setelah diskon 10%, harga bayar sandal Rp18.000. Berapa rupiah harga aslinya?", a:["20000"], ph:"contoh: 20000",
+        p:"Yang dibayar 90%. Nilai 1% = 18.000 : 90 = 200. Harga asli = 200 × 100 = <b>Rp20.000</b>." }
+    ]
+  },
+  q6: {
+    judul: "Latihan 6 — Menentukan Besar Diskon dari Harga Dibayar & Harga Asli",
+    soal: [
+      { q:"Harga asli sepatu Rp50.000, Dina membayar Rp40.000. Berapa rupiah besar diskonnya?", a:["10000"], ph:"contoh: 10000",
+        p:"Besar diskon = 50.000 − 40.000 = <b>Rp10.000</b>. (Sama dengan 20% dari 50.000.)" },
+      { q:"Harga asli tas Rp20.000, dibayar Rp15.000. Berapa persen diskonnya?", a:["25"], ph:"contoh: 25",
+        p:"Besar diskon = 20.000 − 15.000 = 5.000. Persen diskon = 5.000/20.000 = 1/4 = 25/100 → <b>25%</b>." },
+      { q:"Harga asli sepeda Rp100.000, dibayar Rp75.000. Berapa rupiah besar diskonnya?", a:["25000"], ph:"contoh: 25000",
+        p:"Besar diskon = 100.000 − 75.000 = <b>Rp25.000</b>." },
+      { q:"Harga asli buku Rp30.000, dibayar Rp24.000. Berapa persen diskonnya?", a:["20"], ph:"contoh: 20",
+        p:"Besar diskon = 30.000 − 24.000 = 6.000. Persen diskon = 6.000/30.000 = 1/5 = 20/100 → <b>20%</b>." },
+      { q:"Harga asli jaket Rp80.000, dibayar Rp60.000. Berapa rupiah besar diskonnya?", a:["20000"], ph:"contoh: 20000",
+        p:"Besar diskon = 80.000 − 60.000 = <b>Rp20.000</b>." },
+      { q:"Harga asli penghapus Rp10.000, dibayar Rp9.000. Berapa persen diskonnya?", a:["10"], ph:"contoh: 10",
+        p:"Besar diskon = 10.000 − 9.000 = 1.000. Persen diskon = 1.000/10.000 = 1/10 = 10/100 → <b>10%</b>." },
+      { q:"Harga asli mainan Rp40.000, dibayar Rp20.000. Berapa persen diskonnya?", a:["50"], ph:"contoh: 50",
+        p:"Besar diskon = 40.000 − 20.000 = 20.000. Persen diskon = 20.000/40.000 = 1/2 = 50/100 → <b>50%</b>." },
+      { q:"Harga asli lampu belajar Rp60.000, dibayar Rp54.000. Berapa rupiah besar diskonnya?", a:["6000"], ph:"contoh: 6000",
+        p:"Besar diskon = 60.000 − 54.000 = <b>Rp6.000</b>." },
+      { q:"Harga asli tempat pensil Rp25.000, dibayar Rp20.000. Berapa persen diskonnya?", a:["20"], ph:"contoh: 20",
+        p:"Besar diskon = 25.000 − 20.000 = 5.000. Persen diskon = 5.000/25.000 = 1/5 = 20/100 → <b>20%</b>." },
+      { q:"Harga asli koper Rp90.000, dibayar Rp45.000. Berapa persen diskonnya?", a:["50"], ph:"contoh: 50",
+        p:"Besar diskon = 90.000 − 45.000 = 45.000. Persen diskon = 45.000/90.000 = 1/2 = 50/100 → <b>50%</b>." }
+    ]
+  }
+};
+
+/* ================================================================
+   MESIN KUIS — cek jawaban, skor, bintang, navigasi soal 1-10
+================================================================ */
+function normAns(v){
+  let s=(v==null?'':String(v)).toLowerCase().trim();
+  s=s.replace(/¼/g,'1/4').replace(/½/g,'1/2').replace(/¾/g,'3/4')
+     .replace(/⅕/g,'1/5').replace(/⅖/g,'2/5').replace(/⅗/g,'3/5').replace(/⅘/g,'4/5')
+     .replace(/⅙/g,'1/6').replace(/⅚/g,'5/6').replace(/⅛/g,'1/8').replace(/⅜/g,'3/8')
+     .replace(/⅝/g,'5/8').replace(/⅞/g,'7/8').replace(/⅒/g,'1/10');
+  s=s.replace(/rp\.?|rupiah/g,'').replace(/%/g,'').replace(/\s+/g,'');
+  if(/^\d{1,3}(\.\d{3})+(,\d+)?$/.test(s)) s=s.replace(/\./g,'');
+  s=s.replace(/,/g,'.');
+  s=s.replace(/^0+(\d)/,'$1');
+  return s;
+}
+const quizState={};
+Object.keys(QUIZZES).forEach(k=>{
+  quizState[k]={idx:0,done:Array(10).fill(false),firstTry:Array(10).fill(null),
+                tried:Array(10).fill(0),vals:Array(10).fill(''),showSummary:false};
+});
+function buildQuiz(key){
+  const root=document.getElementById('quiz-'+key);
+  root.innerHTML='<div class="q-head"></div><div class="dots" role="tablist"></div><div class="card q-card"></div>';
+  renderQuiz(key);
+  root.addEventListener('submit',e=>{ if(e.target.classList.contains('ans-row')){e.preventDefault();checkAns(key);} });
+  root.addEventListener('click',e=>{
+    const b=e.target.closest('button'); if(!b) return;
+    if(b.classList.contains('dot')){ const st=quizState[key]; st.idx=+b.dataset.i; st.showSummary=false; renderQuiz(key); }
+    else if(b.id==='pembBtn-'+key){ root.querySelector('.pemb').classList.toggle('show'); }
+    else if(b.classList.contains('qnav-prev')){ const st=quizState[key]; st.idx=(st.idx+9)%10; renderQuiz(key); }
+    else if(b.classList.contains('qnav-next')){ const st=quizState[key]; st.idx=(st.idx+1)%10; renderQuiz(key); }
+    else if(b.classList.contains('qreset')){ resetQuiz(key); }
+    else if(b.classList.contains('qfinish')){ go(cur+1); }
+  });
+}
+function resetQuiz(key){
+  quizState[key]={idx:0,done:Array(10).fill(false),firstTry:Array(10).fill(null),
+                  tried:Array(10).fill(0),vals:Array(10).fill(''),showSummary:false};
+  renderQuiz(key);
+}
+function starCount(score){ return score>=9?3:(score>=7?2:(score>=5?1:0)); }
+function renderQuiz(key){
+  const cfg=QUIZZES[key], st=quizState[key], root=document.getElementById('quiz-'+key);
+  const doneN=st.done.filter(Boolean).length, score=st.firstTry.filter(v=>v===true).length;
+  /* kepala kuis */
+  const head=root.querySelector('.q-head');
+  head.innerHTML=
+    '<div class="chips">'+
+      '<span class="chip done-chip">🏁 Selesai: '+doneN+'/10</span>'+
+      '<span class="chip score-chip">⭐ Skor: '+score+'/10</span>'+
+    '</div>'+
+    '<div class="small" style="text-align:right">'+cfg.judul+'</div>';
+  /* titik nomor 1-10 */
+  const dots=root.querySelector('.dots');
+  dots.innerHTML='';
+  for(let i=0;i<10;i++){
+    const d=document.createElement('button');
+    d.type='button'; d.className='dot'; d.dataset.i=i; d.textContent=i+1;
+    d.setAttribute('aria-label','Ke soal '+(i+1));
+    if(st.done[i]) d.classList.add('ok');
+    else if(st.tried[i]>0) d.classList.add('miss');
+    if(i===st.idx && !st.showSummary) d.classList.add('cur');
+    dots.appendChild(d);
+  }
+  /* kartu soal */
+  const card=root.querySelector('.q-card');
+  if(st.done.every(Boolean) && st.showSummary){
+    const s=starCount(score);
+    const msg = s===3 ? 'Luar biasa, astronot jagoan! 🏆'
+              : s===2 ? 'Hebat! Sedikit lagi menuju sempurna! 🚀'
+              : s===1 ? 'Bagus, terus berlatih ya! 💪'
+              : 'Jangan menyerah! Baca lagi materinya, lalu ulangi latihannya ya 🌱';
+    card.innerHTML='<div class="summary show">'+
+      '<div class="stars-big">'+(s?'⭐'.repeat(s):'☁️')+'</div>'+
+      '<h3>Misi Latihan Berhasil!</h3>'+
+      '<p>Skor benar pada percobaan pertama: <b>'+score+' dari 10</b> · Bintang: <b>'+s+' dari 3</b><br>'+msg+'</p>'+
+      '<div class="flex" style="justify-content:center">'+
+        '<button class="btn purple qreset" type="button">⟲ Ulangi Latihan</button>'+
+        '<button class="btn qfinish" type="button">Menuju Misi Berikutnya →</button>'+
+      '</div></div>';
+    return;
+  }
+  const S=cfg.soal[st.idx], i=st.idx, isDone=st.done[i];
+  let html='<span class="tag">Soal '+(i+1)+' dari 10</span>'+
+    '<div class="q-text">'+S.q+'</div>'+
+    '<form class="ans-row">'+
+      '<input class="ans" type="text" placeholder="'+S.ph+'" autocomplete="off" '+(isDone?'disabled value="'+st.vals[i].replace(/"/g,'&quot;')+'"':'')+' aria-label="Ketik jawabanmu di sini">'+
+      (isDone?'':'<button class="btn" type="submit">Cek Jawaban ✔</button>')+
+    '</form>';
+  if(isDone){
+    html+='<div class="fb good">'+(st.firstTry[i]?'🎉 <b>Benar sekali!</b> Jawabanmu tepat.':
+      '✅ <b>Benar!</b> Kamu berhasil setelah beberapa percobaan, hebat 👍')+'</div>';
+  }else{
+    html+='<div class="fb"></div>';
+  }
+  html+='<div class="pemb'+(isDone?' show':'')+'"><div class="pt">💡 Pembahasan</div><div>'+S.p+'</div></div>';
+  html+='<div class="q-foot">'+
+      '<button class="btn ghost" type="button" id="pembBtn-'+key+'">💡 '+(isDone?'Tutup Pembahasan':'Lihat Pembahasan')+'</button>'+
+      '<div class="flex">'+
+        '<button class="btn ghost qnav-prev" type="button">◀ Soal '+(i===0?10:i)+'</button>'+
+        '<button class="btn purple qnav-next" type="button">Soal '+(i===9?1:i+2)+' ▶</button>'+
+      '</div></div>';
+  card.innerHTML=html;
+}
+function checkAns(key){
+  const cfg=QUIZZES[key], st=quizState[key], root=document.getElementById('quiz-'+key);
+  const i=st.idx, input=root.querySelector('input.ans'), fb=root.querySelector('.fb');
+  if(st.done[i] || !input) return;
+  const raw=input.value;
+  const val=normAns(raw);
+  if(!val){ fb.className='fb bad'; fb.innerHTML='✏️ Ketik dulu jawabanmu di kotak, ya!'; return; }
+  const ok=cfg.soal[i].a.some(x=>normAns(x)===val);
+  st.vals[i]=raw;
+  if(ok){
+    st.done[i]=true;
+    st.firstTry[i]=(st.firstTry[i]===null);
+    if(st.done.every(Boolean)) st.showSummary=true;
+    renderQuiz(key);
+  }else{
+    st.tried[i]++;
+    if(st.firstTry[i]===null) st.firstTry[i]=false;
+    fb.className='fb bad';
+    fb.innerHTML = st.tried[i]===1
+      ? '🙈 <b>Belum tepat.</b> Periksa lagi hitunganmu, coba lagi ya!'
+      : '💡 <b>Masih belum tepat.</b> Coba buka <b>Lihat Pembahasan</b> untuk bantuan!';
+  }
+}
+
+/* ================================================================
+   NAVIGASI SLIDE, MENU DAFTAR ISI, KEYBOARD, LAIN-LAIN
+================================================================ */
+const slides=[...document.querySelectorAll('.slide')];
+let cur=0;
+function go(n){
+  cur=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach((s,i)=>s.classList.toggle('active',i===cur));
+  document.getElementById('pbar').style.width=((cur+1)/slides.length*100)+'%';
+  document.getElementById('counter').textContent=(cur+1)+' / '+slides.length;
+  document.getElementById('hereName').textContent=slides[cur].dataset.title;
+  document.getElementById('btnPrev').disabled=(cur===0);
+  document.getElementById('btnNext').disabled=(cur===slides.length-1);
+  closeMenu();
+  slides[cur].scrollTop=0;
+}
+document.getElementById('btnPrev').addEventListener('click',()=>go(cur-1));
+document.getElementById('btnNext').addEventListener('click',()=>go(cur+1));
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){closeMenu();return;}
+  const t=(e.target.tagName||'').toUpperCase();
+  if(t==='INPUT'||t==='TEXTAREA') return;
+  if(e.key==='ArrowRight'||e.key==='PageDown') go(cur+1);
+  else if(e.key==='ArrowLeft'||e.key==='PageUp') go(cur-1);
+  else if(e.key==='Home') go(0);
+  else if(e.key==='End') go(slides.length-1);
+});
+/* Menu daftar isi */
+const GROUPS=[['Pembuka','🛫'],['Materi','📚'],['Latihan','✏️'],['Penutup','🎀']];
+function buildMenu(){
+  const body=document.getElementById('menuBody');
+  let html='';
+  GROUPS.forEach(g=>{
+    const items=slides.map((s,i)=>({i,t:s.dataset.title,g:s.dataset.group})).filter(x=>x.g===g[0]);
+    if(!items.length) return;
+    html+='<div class="mgroup"><h4>'+g[1]+' '+g[0]+'</h4><div class="mlist">';
+    items.forEach(x=>{
+      html+='<button class="mitem" data-go="'+x.i+'"><span class="mn">Slide '+(x.i+1)+'</span>'+x.t+'</button>';
+    });
+    html+='</div></div>';
+  });
+  body.innerHTML=html;
+  body.addEventListener('click',e=>{
+    const b=e.target.closest('.mitem'); if(!b) return;
+    go(+b.dataset.go);
+  });
+}
+function openMenu(){
+  const ov=document.getElementById('menuOverlay');
+  ov.classList.add('show');
+  ov.querySelectorAll('.mitem').forEach(m=>m.classList.toggle('here',+m.dataset.go===cur));
+}
+function closeMenu(){ document.getElementById('menuOverlay').classList.remove('show'); }
+document.getElementById('btnMenu').addEventListener('click',openMenu);
+document.getElementById('btnCloseMenu').addEventListener('click',closeMenu);
+document.getElementById('menuOverlay').addEventListener('click',e=>{ if(e.target.id==='menuOverlay') closeMenu(); });
+
+/* Bintang latar belakang */
+(function(){
+  const c=document.getElementById('stars');
+  for(let i=0;i<130;i++){
+    const s=document.createElement('i');
+    const z=Math.random();
+    s.style.left=(Math.random()*100).toFixed(2)+'%';
+    s.style.top=(Math.random()*100).toFixed(2)+'%';
+    s.style.width=s.style.height=(z*2.2+1).toFixed(1)+'px';
+    s.style.opacity=(0.2+z*0.65).toFixed(2);
+    c.appendChild(s);
+  }
+})();
+/* Kotak visual persen (grid 100) */
+document.querySelectorAll('.grid100[data-on]').forEach(g=>{
+  const on=parseInt(g.dataset.on,10)||0;
+  for(let i=0;i<100;i++){ const d=document.createElement('i'); if(i<on) d.classList.add('on'); g.appendChild(d); }
+});
+/* Kartu flip apersepsi */
+document.querySelectorAll('.flip').forEach(f=>{
+  const tog=()=>f.classList.toggle('flipped');
+  f.addEventListener('click',tog);
+  f.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();tog();} });
+});
+/* Refleksi */
+document.querySelectorAll('.mood').forEach(m=>{
+  m.addEventListener('click',()=>{
+    document.querySelectorAll('.mood').forEach(x=>x.classList.remove('sel'));
+    m.classList.add('sel');
+    const p=document.getElementById('moodMsg');
+    p.textContent=m.dataset.msg; p.classList.add('show');
+  });
+});
+document.getElementById('refSave').addEventListener('click',()=>{
+  const t=document.getElementById('refText').value.trim();
+  const p=document.getElementById('refMsg');
+  p.textContent = t ? 'Terima kasih sudah berpikir keras, astronot hebat! ⭐'
+                    : 'Tulis dulu ya, satu hal baru apa pun boleh! 🤔';
+  p.classList.add('show');
+});
+
+/* Inisialisasi */
+Object.keys(QUIZZES).forEach(buildQuiz);
+buildMenu();
+go(0);
+</script>
+</body>
+</html>
